@@ -13,6 +13,7 @@
             --accent-color: #8c7b6e; /* 溫柔的大地棕 */
             --border-color: #e6e3e0;
             --card-bg: #ffffff;
+            --success-color: #6e8c78; /* 內斂草綠 */
         }
 
         body {
@@ -126,7 +127,7 @@
             transition: width 0.6s ease;
         }
 
-        /* 文青風按鈕 */
+        /* 文青風按鈕與輸入框 */
         .btn-link {
             display: inline-block;
             background-color: var(--accent-color);
@@ -137,8 +138,14 @@
             font-size: 0.9rem;
             letter-spacing: 1px;
             transition: opacity 0.2s;
+            border: none;
+            cursor: pointer;
         }
         .btn-link:hover { opacity: 0.9; }
+
+        .btn-line {
+            background-color: #06C755; /* LINE 官方綠色 */
+        }
 
         .tag {
             font-size: 0.75rem;
@@ -146,6 +153,38 @@
             border-radius: 3px;
             background: #eae6e1;
             margin-left: 5px;
+        }
+
+        /* 極簡表單樣式 */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: 'Noto Serif TC', serif;
+            color: var(--text-color);
+            box-sizing: border-box;
+            background-color: #faf9f7;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: #ffffff;
+        }
+        #form-status {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: var(--success-color);
+            display: none;
         }
     </style>
 </head>
@@ -160,17 +199,59 @@
     <div class="main-layout">
         <!-- 左側：作戰行動與外部連結 -->
         <div class="left-column">
+            
+            <!-- ⚡ 外部系統與 LINE 快捷聯網 -->
             <div class="card">
                 <div class="section-title">⚡ 外部系統快捷聯網</div>
-                <p>擺脫 Notion 的卡頓，直接點選下方按鈕，一鍵跳轉至你的 Google 進度試算表或讀書文件：</p>
-                <!-- 替換成你的 Google Sheet / Doc 連結 -->
-                <a href="https://docs.google.com/spreadsheets/" target="_blank" class="btn-link" style="margin-right: 10px;">打開 Google 學習試算表</a>
-                <a href="https://docs.google.com/document/" target="_blank" class="btn-link" style="background-color: #a39284;">打開 NotebookLM 筆記文件</a>
+                <p>擺脫工具的卡頓，一鍵跳轉至你的雲端備考核心與通訊小幫手：</p>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <a href="https://docs.google.com/spreadsheets/" target="_blank" class="btn-link">打開 Google 學習試算表</a>
+                    <a href="https://docs.google.com/document/" target="_blank" class="btn-link" style="background-color: #a39284;">打開 NotebookLM 筆記文件</a>
+                    <!-- 請將此處連結替換成你 LINE 官方帳號的加入好友連結/聊天網址 -->
+                    <a href="https://line.me/R/ti/p/@你的官方帳號ID" target="_blank" class="btn-link btn-line">打開 LINE 備考小幫手</a>
+                </div>
+            </div>
+
+            <!-- ✍️ 即時讀書進度填寫（免開試算表，直接寫入 Google 並連動 LINE） -->
+            <div class="card">
+                <div class="section-title">✍️ 紀錄今日步伐</div>
+                <p style="font-size: 0.85rem; color: #7a736e;">在此填寫將直接同步至 Google 試算表，並由 LINE 官方帳號發送進度回報。</p>
+                
+                <form id="study-form">
+                    <div class="form-group">
+                        <label>讀書科目</label>
+                        <select class="form-control" id="form-subject" required>
+                            <option value="行政法">行政法 (專業)</option>
+                            <option value="社會福利政策與法規">社會福利政策與法規 (專業)</option>
+                            <option value="社會學">社會學 (專業)</option>
+                            <option value="社會工作">社會工作 (專業)</option>
+                            <option value="基礎能力測驗">基礎能力測驗 (普通)</option>
+                            <option value="原住民族行政及法規">原住民族行政及法規 (普通)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>學習時數 (小時)</label>
+                        <input type="number" step="0.5" min="0" class="form-control" id="form-hours" placeholder="例如: 2.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label>學習章節與內容摘要</label>
+                        <textarea class="form-control" id="form-summary" rows="3" placeholder="請輸入今天利用 NotebookLM 整理的核心重點或進度..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>目前掌握狀態</label>
+                        <select class="form-control" id="form-status-select" required>
+                            <option value="複習中">🌱 複習中</option>
+                            <option value="已讀完">🌿 已讀完</option>
+                            <option value="已精通">🌳 已精通</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-link" id="submit-btn" style="width: 100%; font-weight: 500;">送出今日讀書紀錄</button>
+                    <div id="form-status"></div>
+                </form>
             </div>
 
             <div class="card">
                 <div class="section-title">☕ 專注空間 (YouTube Ambient)</div>
-                <!-- 這裡放入你喜歡的 YouTube 背景音樂網址中的 ID (例如：embed/後面的代碼) -->
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/jfKfPfyJRdk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
@@ -215,7 +296,7 @@
 </div>
 
 <script>
-    // 自動計算距離 2026 原特三等考試 (假設為 2026/09/05，可自行修改) 的倒數計時
+    // 自動計算距離 2026 原特三等考試 (2026/09/05) 的倒數計時
     function updateCountdown() {
         const examDate = new Date("2026-09-05T00:00:00").getTime();
         const now = new Date().getTime();
@@ -233,6 +314,64 @@
         }
     }
     updateCountdown();
+
+    // ==========================================
+    // 🔗 串接 GOOGLE 試算表 API 功能設定
+    // ==========================================
+    
+    // ⚠️ 請將下方引號內的網址，替換成你在 Google 部署的「網頁應用程式 (Web App) URL」
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/xxxx/exec";
+
+    document.getElementById('study-form').addEventListener('submit', function(e) {
+        e.preventDefault(); // 防止網頁重整
+        
+        const submitBtn = document.getElementById('submit-btn');
+        const statusDiv = document.getElementById('form-status');
+        
+        // 切換按鈕為讀取中狀態
+        submitBtn.disabled = true;
+        submitBtn.innerText = "正在傳送至 Google 與 LINE...";
+        statusDiv.style.display = "none";
+
+        // 收集表單資料
+        const formData = {
+            subject: document.getElementById('form-subject').value,
+            hours: document.getElementById('form-hours').value,
+            summary: document.getElementById('form-summary').value,
+            status: document.getElementById('form-status-select').value
+        };
+
+        // 發送 POST 請求給 Google Apps Script
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // 避免本地端跨網域(CORS)錯誤
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(() => {
+            // 顯示成功狀態
+            statusDiv.style.display = "block";
+            statusDiv.innerText = "✨ 紀錄成功！進度已同步，LINE 通知已發送。";
+            
+            // 清空表單
+            document.getElementById('form-hours').value = '';
+            document.getElementById('form-summary').value = '';
+            
+            // 恢復按鈕
+            submitBtn.disabled = false;
+            submitBtn.innerText = "送出今日讀書紀錄";
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            statusDiv.style.display = "block";
+            statusDiv.style.color = "#8c6e6e";
+            statusDiv.innerText = "❌ 傳送失敗，請檢查網路或 API 設定。";
+            submitBtn.disabled = false;
+            submitBtn.innerText = "送出今日讀書紀錄";
+        });
+    });
 </script>
 </body>
 </html>
