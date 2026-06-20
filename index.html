@@ -210,8 +210,10 @@ function countdown(){
   const exam = new Date("2026-09-05").getTime();
   const now = new Date().getTime();
   const d = Math.floor((exam-now)/(1000*60*60*24));
+  
+  // ✨ 這裡將數字單獨放大到 38px，使用主題的 var(--error) 紅褐色，更有警示感
   document.getElementById("countdown").innerHTML =
-  d>0 ? `🎯 距離考試還有 ${d} 天` : "🔥 考試已到";
+  d > 0 ? `🎯 距離考試還有 <span style="font-size: 38px; font-weight: 700; color: var(--error); vertical-align: -2px; margin: 0 4px;">${d}</span> 天` : "🔥 考試已到";
 }
 countdown();
 
