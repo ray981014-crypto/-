@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>原特三等社會行政｜作戰指揮中心 V4</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght=300;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -47,6 +47,7 @@ body{
   margin-left: 20px;
   font-size: 15px;
   transition: color 0.3s;
+  display: inline-block;
 }
 .nav-links a:hover, .nav-links a.active {
   color: #c9b097;
@@ -99,9 +100,10 @@ h1{
   display: block;
 }
 
+/* 🖥️ 預設桌機版雙欄排版 */
 .grid{
   display:grid;
-  grid-template-columns:2fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap:30px;
 }
 
@@ -207,7 +209,7 @@ button:disabled{
 .todo-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 12px; /* 稍微增加行動端間距方便點選 */
   font-size: 16px;
   cursor: pointer;
 }
@@ -247,6 +249,73 @@ button:disabled{
   margin-top: 6px;
   text-align: right;
 }
+
+
+/* ==========================================================================
+   📱📱📱 響應式斷點設置（智慧型手機與平板電腦優化） 📱📱📱
+   ========================================================================== */
+
+/* 📑 平板電腦與中型螢幕優化 (992px 以下) */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1.4fr 1fr; /* 平板上稍微拉平均兩欄比例 */
+    gap: 20px;
+  }
+  h1 {
+    font-size: 28px; /* 標題微調小，避免平板直向時折行太難看 */
+  }
+}
+
+/* 📱 智慧型手機與窄螢幕優化 (768px 以下) */
+@media (max-width: 768px) {
+  /* 頂部導覽列改為垂直置中排版，防按鈕重疊 */
+  .nav-bar {
+    flex-direction: column;
+    padding: 12px;
+    gap: 10px;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 超過寬度自動換行 */
+    gap: 10px;
+  }
+  .nav-links a {
+    margin-left: 0;
+    font-size: 14px;
+    padding: 2px 4px;
+  }
+  
+  /* 💥 核心：左右雙欄在手機上強制變成單欄垂直疊放 */
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .container {
+    padding: 15px 10px; /* 縮小兩側留白，留給手機看更多文字 */
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  .callout {
+    font-size: 17px;
+    padding: 15px;
+  }
+  
+  /* 讓表單按鈕在手機上更大、更好按 */
+  button, input, select, textarea {
+    font-size: 16px;
+    padding: 14px 12px; 
+  }
+  
+  /* 手機上調整音樂控制列文字限寬，防止爆開 */
+  .audio-info-text {
+    max-width: 120px;
+  }
+}
 </style>
 </head>
 
@@ -257,7 +326,6 @@ button:disabled{
   <div class="nav-links">
     <a href="index.html" class="active">主控面板</a>
     <a href="library.html" target="_blank">法規與題庫</a>
-    <!-- 🟢 新增的 Google 試算表連結（記得把下面的 https://docs.google.com/... 換成你自己的試算表網址網址） -->
     <a href="https://docs.google.com/spreadsheets/d/1EdDZzI2Pe98d0Z4c5rltDHcH9XWcz0AopuvjtCDWDjs/edit?gid=0#gid=0" target="_blank">📊 讀書計畫記錄表</a>
     <a href="#" onclick="alert('💡 申論模擬訓練頁預留位置')">申論模擬</a>
   </div>
@@ -278,6 +346,7 @@ button:disabled{
 
 <div class="grid">
 
+<!-- 👈 左欄（手機上會變成最上層） -->
 <div>
 <div class="card">
 <div class="title">📝 今日讀書紀錄</div>
@@ -309,6 +378,7 @@ button:disabled{
 </div>
 </div>
 
+<!-- 👉 右欄（手機上會自動滑到下方） -->
 <div>
 <div class="card youtube-card">
 <div class="title">☕ 專注音樂</div>
@@ -365,7 +435,7 @@ const API = "https://script.google.com/macros/s/AKfycbzaeVm6VLLh4xZqrCk7-xk8Dlt-
 
 const defaultPool = ["OS8lnKZdJYc", "5Q2Pc-e-8Qc"];
 let myMusicPool = [];
-let ytPlayer = null; // 全局 YouTube 播放器實例
+let ytPlayer = null; 
 
 const defaultTargets = [
   "行政罰法（行政法最後拼圖）：搞懂判斷流程，強攻 §26 刑懲併罰與 §27 時效",
@@ -375,18 +445,15 @@ const defaultTargets = [
   "原住民族教育法：完成第一輪全面掃除，並啟動高CP值選擇題戰術"
 ];
 
-// 🎨 升級功能 1：倒數計時與時間軸視覺化進度條
 function countdown(){
-  const startDate = new Date("2026-01-01").getTime(); // 衝刺起跑點設定
-  const examDate = new Date("2026-09-05").getTime();  // 考試日期
+  const startDate = new Date("2026-01-01").getTime(); 
+  const examDate = new Date("2026-09-05").getTime();  
   const nowDate = new Date().getTime();
   
-  // 計算剩餘天數
   const d = Math.floor((examDate - nowDate) / (1000 * 60 * 60 * 24));
   document.getElementById("countdown").innerHTML =
-  d > 0 ? "🎯 距離考試還有 <span style='font-size: 38px; font-weight: 700; color: var(--error); vertical-align: -2px; margin: 0 4px;'>" + d + "</span> 天" : "🔥 考試已到";
+  d > 0 ? "🎯 距離考試還有 <span style='font-size: 38px; font-weight: 700; color: var(--error); vertical-align: -2px; margin: 0 4px;'>' + d + '</span> 天" : "🔥 考試已到";
 
-  // 計算時間消耗百分比
   const totalDuration = examDate - startDate;
   const elapsedDuration = nowDate - startDate;
   let percent = Math.floor((elapsedDuration / totalDuration) * 100);
@@ -394,14 +461,12 @@ function countdown(){
   if (percent < 0) percent = 0;
   if (percent > 100) percent = 100;
   
-  // 更新進度條 UI
   document.getElementById("progress-bar").style.width = percent + "%";
   document.getElementById("progress-text").innerText = "⏳ 115年備考時間軸已推進 " + percent + "%";
 }
 
-// 🎨 升級功能 2：YouTube Player API 核心架構
 function onYouTubeIframeAPIReady() {
-  initMusicCenter(); // 先讀取歌單池資料
+  initMusicCenter(); 
   
   if (myMusicPool.length === 0) return;
   const initialId = myMusicPool[Math.floor(Math.random() * myMusicPool.length)];
@@ -412,14 +477,14 @@ function onYouTubeIframeAPIReady() {
     videoId: initialId,
     playerVars: {
       'autoplay': 1,
-      'mute': 1,       // 遵守瀏覽器安全機制，預設靜音啟動
-      'controls': 1,   // 保留基礎控制
+      'mute': 1,       
+      'controls': 1,   
       'rel': 0
     },
     events: {
       'onReady': (event) => {
         document.getElementById("current-track-id").innerText = "🎵 ID: " + initialId;
-        ytPlayer.setVolume(30); // 預設 30% 音量
+        ytPlayer.setVolume(30); 
       },
       'onStateChange': onPlayerStateChange
     }
@@ -428,7 +493,6 @@ function onYouTubeIframeAPIReady() {
 
 function onPlayerStateChange(event) {
   const btn = document.getElementById("play-pause-btn");
-  // YT.PlayerState.PLAYING = 1, PAUSED = 2
   if (event.data === 1) {
     btn.innerText = "⏸️ 暫停";
     btn.style.background = "var(--accent)";
@@ -444,7 +508,7 @@ function togglePlayState() {
   if (state === 1) {
     ytPlayer.pauseVideo();
   } else {
-    ytPlayer.unMute(); // 使用者主動點擊播放時，順便幫忙解鎖靜音
+    ytPlayer.unMute(); 
     ytPlayer.playVideo();
   }
 }
@@ -453,7 +517,7 @@ function adjustVolume(value) {
   if (!ytPlayer || typeof ytPlayer.setVolume !== 'function') return;
   ytPlayer.setVolume(value);
   if (value > 0) {
-    ytPlayer.unMute(); // 只要使用者拉動音量滑桿，立刻強行解開瀏覽器的靜音鎖！
+    ytPlayer.unMute(); 
   }
 }
 
@@ -678,12 +742,11 @@ function renderReviewDue(list){
   if(!list || list.length === 0){ box.innerHTML = "目前沒有待複習的科目，繼續保持！"; return; }
   let html = "";
   list.forEach(item => {
-    html += "<div style='margin-bottom:14px; line-height:1.6;'>📌 <b style='font-size:16px;'>" + item.subject + "</b> 已 " + item.daysSinceLast + " 天沒回顧<br><span style='font-size:14px; background:#fffcf7; padding:2px 6px; border:1px dashed var(--line); display:inline-block; margin-top:4px;'>" + item.summary + "</span></div>";
+    html += "<div style='margin-bottom:14px; line-height:1.6;'>📌 <b style='font-size:16px;'>" + item.subject + "</b> 已 " + item.daysSinceLast + " 天沒回顧<br><span style='font-size:14px; background:#fffcf7; padding:2px 6px; border:1px dashed var(--line); display:inline-block; margin-top:4px;'>' + item.summary + '</span></div>";
   });
   box.innerHTML = html;
 }
 
-// 🌐 啟動執行
 countdown();
 initTargets();
 load();
