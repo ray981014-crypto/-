@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>法規與題庫中心｜國考戰情系統</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#fbfaf8;
+  --card:#ffffff;
+  --text:#2f2b28;
+  --muted:#8a8178;
+  --line:#e7e3df;
+  --accent:#8c7b6e;
+  --error:#a35d5d;
+  --success:#5da373;
+}
+
+body{
+  margin:0;
+  font-family:"Noto Serif TC";
+  background:var(--bg);
+  color:var(--text);
+  font-size: 17px; 
+  line-height:1.7;
+}
+
+/* 🧭 頂部導覽列樣式 */
+.nav-bar {
+  background: #2f2b28;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-logo {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.nav-links a {
+  color: #e7e3df;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: #c9b097;
+  border-bottom: 2px solid #c9b097;
+}
+
+.container{max-width:1100px;margin:auto;padding:30px 20px;}
+
+header{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+h1{
+  font-weight:500;
+  letter-spacing:2px;
+  font-size: 32px; 
+  margin-top: 10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:30px;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:22px; 
+  margin-bottom:20px;
+}
+
+.title{
+  font-weight:600;
+  font-size: 19px; 
+  border-left:4px solid var(--accent); 
+  padding-left:10px;
+  margin-bottom:15px;
+}
+
+/* 🔗 連結按鈕清單排版 */
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.law-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #faf9f7;
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 16px;
+}
+
+.law-btn:hover {
+  background: #f3f0ec;
+  border-color: var(--accent);
+  transform: translateX(4px);
+}
+
+.law-tag {
+  font-size: 12px;
+  background: var(--accent);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.database-tag {
+  font-size: 12px;
+  background: #5d7fa3;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+.note-text {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav-bar">
+  <div class="nav-logo">🏛️ 國考戰情系統</div>
+  <div class="nav-links">
+    <a href="index.html">主控面板</a>
+    <a href="library.html" class="active">法規與題庫</a>
+    <a href="#" onclick="alert('💡 申論模擬訓練頁預留位置')">申論模擬</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<header>
+  <h1>📚 法規與題庫武器庫</h1>
+  <p style="color: var(--muted); margin-top: 5px;">快速直達核心核心法規與個人考古題庫庫房</p>
+</header>
+
+<div class="grid">
+
+  <div>
+    <div class="card">
+      <div class="title">⚖️ 社會福利與行政法規</div>
+      <p class="note-text">點擊直接跳轉至全國法規資料庫最新條文：</p>
+      
+      <div class="link-list">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050136" target="_blank" class="law-btn">
+          <span>《社會救助法》</span>
+          <span class="law-tag">社政核心</span>
+        </a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050001" target="_blank" class="law-btn">
+          <span>《兒童及少年福利與權益保障法》</span>
+          <span class="law-tag">兒少福利</span>
+        </a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050046" target="_blank" class="law-btn">
+          <span>《身心障礙者權益保障法》</span>
+          <span class="law-tag">身障福利</span>
+        </a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0170001" target="_blank" class="law-btn">
+          <span>《原住民族教育法》</span>
+          <span class="law-tag">原民專有</span>
+        </a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030055" target="_blank" class="law-btn">
+          <span>《行政程序法》</span>
+          <span class="law-tag">行政法</span>
+        </a>
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030250" target="_blank" class="law-btn">
+          <span>《行政罰法》</span>
+          <span class="law-tag">本週強攻</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="card">
+      <div class="title">🎯 題庫與線上刷題</div>
+      <p class="note-text">外部測驗平台與個人進度資源：</p>
+      
+      <div class="link-list">
+        <a href="https://yamol.tw" target="_blank" class="law-btn">
+          <span>阿摩線上測驗</span>
+          <span class="database-tag">選擇題狂刷</span>
+        </a>
+        <a href="https://www.public.com.tw/exam-test" target="_blank" class="law-btn">
+          <span>公職王歷屆試題下載</span>
+          <span class="database-tag">考古題 PDF</span>
+        </a>
+        <a href="#" onclick="alert('💡 提示：可編輯代碼將此處替換為你的 Google 雲端錯題本網址！')" class="law-btn">
+          <span>個人申論題錯題本 (雲端硬碟)</span>
+          <span class="database-tag">私房資源</span>
+        </a>
+        <a href="#" onclick="alert('💡 提示：可將此處替換為你的 Notion 筆記連結！')" class="law-btn">
+          <span>社會學/社工時事筆記資料庫</span>
+          <span class="database-tag">Notion</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="card" style="background: #f3f0ec;">
+      <div class="title" style="border-left-color: var(--error);">💡 備考指揮官碎碎念</div>
+      <p style="font-size: 15px; margin: 0; color: var(--text);">
+        三等考試通常**法規名稱**與**重要條號（如行政罰 §26、§27）**必須在申論題中精準引述。刷選擇題時錯題一定要立刻收錄，這個分頁就是你的彈藥庫！
+      </p>
+    </div>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
