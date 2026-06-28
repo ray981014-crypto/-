@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>五大考科法規題庫庫房｜國考戰情系統</title>
+<meta name="description" content="原特三等社會行政考試｜五科法規與題庫快速入口">
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght=300;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -15,131 +18,305 @@
   --muted:#8a8178;
   --line:#e7e3df;
   --accent:#8c7b6e;
+  --accent-soft:#c9b097;
   --error:#a35d5d;
   --success:#5da373;
+  --info:#5d7fa3;
 }
+
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
-  font-family:"Noto Serif TC";
+  font-family:"Noto Serif TC", serif;
   background:var(--bg);
   color:var(--text);
-  font-size: 17px; 
+  font-size:17px;
   line-height:1.7;
 }
 
-/* 🧭 頂部導覽列樣式 */
-.nav-bar {
-  background: #2f2b28;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+a{ color:inherit; }
+
+/* 🧭 頂部導覽列 */
+.nav-bar{
+  background:#2f2b28;
+  padding:10px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
 }
-.nav-logo {
-  color: #fff;
-  font-weight: 700;
-  letter-spacing: 1px;
+.nav-logo{
+  color:#fff;
+  font-weight:700;
+  letter-spacing:1px;
 }
-.nav-links a {
-  color: #e7e3df;
-  text-decoration: none;
-  margin-left: 20px;
-  font-size: 15px;
-  transition: color 0.3s;
+.nav-links a{
+  color:#e7e3df;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:15px;
+  transition:color 0.2s;
+  padding-bottom:2px;
 }
-.nav-links a:hover, .nav-links a.active {
-  color: #c9b097;
-  border-bottom: 2px solid #c9b097;
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent-soft);
+  border-bottom:2px solid var(--accent-soft);
+}
+.nav-links a:focus-visible{
+  outline:2px solid var(--accent-soft);
+  outline-offset:3px;
 }
 
-.container{max-width:1100px;margin:auto;padding:30px 20px;}
+.container{ max-width:1100px; margin:auto; padding:30px 20px; }
 
-header{
-  text-align:center;
-  margin-bottom:30px;
-}
+header{ text-align:center; margin-bottom:30px; }
 
 h1{
   font-weight:500;
   letter-spacing:2px;
-  font-size: 32px; 
-  margin-top: 10px;
+  font-size:32px;
+  margin:10px 0 0;
 }
+
+.subtitle{ color:var(--muted); margin-top:5px; }
 
 .grid{
   display:grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns:1.2fr 0.8fr;
   gap:30px;
 }
-
-@media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
+@media (max-width:900px){
+  .grid{ grid-template-columns:1fr; }
 }
 
 .card{
   background:var(--card);
   border:1px solid var(--line);
-  padding:22px; 
+  padding:22px;
   margin-bottom:25px;
 }
 
 .title{
   font-weight:600;
-  font-size: 19px; 
-  border-left:4px solid var(--accent); 
+  font-size:19px;
+  border-left:4px solid var(--accent);
   padding-left:10px;
   margin-bottom:15px;
 }
 
-.link-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.note-text{
+  font-size:14px;
+  color:var(--muted);
+  margin-top:-8px;
+  margin-bottom:10px;
 }
 
-.law-btn {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 18px;
-  background: #faf9f7;
-  border: 1px solid var(--line);
-  color: var(--text);
-  text-decoration: none;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  font-size: 16px;
+.link-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.law-btn:hover {
-  background: #f3f0ec;
-  border-color: var(--accent);
-  transform: translateX(4px);
+.law-btn{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px 18px;
+  background:#faf9f7;
+  border:1px solid var(--line);
+  color:var(--text);
+  text-decoration:none;
+  border-radius:4px;
+  transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  font-size:16px;
+  cursor:pointer;
+  width:100%;
+  text-align:left;
+  font-family:inherit;
+}
+.law-btn:hover{
+  background:#f3f0ec;
+  border-color:var(--accent);
+  transform:translateX(4px);
+}
+.law-btn:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
 }
 
-.law-tag {
-  font-size: 12px;
-  background: var(--accent);
-  color: white;
-  padding: 2px 8px;
-  border-radius: 3px;
-  white-space: nowrap;
+.law-btn span:first-child{ flex:1; }
+
+.law-tag{
+  font-size:12px;
+  background:var(--accent);
+  color:#fff;
+  padding:2px 8px;
+  border-radius:3px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.law-tag.danger{ background:var(--error); }
+.law-tag.success{ background:var(--success); }
+.law-tag.info{ background:var(--info); }
+.law-tag.accent{ background:var(--accent-soft); }
+.law-tag.muted{ background:var(--muted); }
+
+.database-tag{
+  font-size:12px;
+  background:var(--info);
+  color:#fff;
+  padding:2px 8px;
+  border-radius:3px;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
-.database-tag {
-  font-size: 12px;
-  background: #5d7fa3;
-  color: white;
-  padding: 2px 8px;
-  border-radius: 3px;
+/* 展開式提示卡（取代 alert 彈窗） */
+.expand-wrap{ display:flex; flex-direction:column; gap:0; }
+.expand-panel{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.25s ease;
+  background:#faf7f2;
+  border:1px solid var(--line);
+  border-top:none;
+}
+.expand-panel.open{ max-height:400px; }
+.expand-panel p{
+  margin:0;
+  padding:14px 18px;
+  font-size:14.5px;
+  color:var(--text);
+  text-align:justify;
+}
+.law-btn .chevron{
+  flex-shrink:0;
+  transition:transform 0.2s ease;
+  color:var(--muted);
+}
+.law-btn[aria-expanded="true"] .chevron{ transform:rotate(180deg); }
+
+/* 個人錯題本連結設定 */
+.custom-link-row{
+  display:flex;
+  gap:8px;
+  margin-top:8px;
+}
+.custom-link-row input{
+  flex:1;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  font-family:inherit;
+  font-size:14px;
+  color:var(--text);
+  background:#faf9f7;
+}
+.custom-link-row input:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:1px;
+}
+.custom-link-row button{
+  padding:10px 16px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:#fff;
+  border-radius:4px;
+  font-family:inherit;
+  font-size:14px;
+  cursor:pointer;
+  transition:opacity 0.2s;
+}
+.custom-link-row button:hover{ opacity:0.85; }
+.save-hint{
+  font-size:12px;
+  color:var(--success);
+  margin-top:6px;
+  min-height:16px;
 }
 
-.note-text {
-  font-size: 14px;
-  color: var(--muted);
-  margin-top: -8px;
-  margin-bottom: 10px;
+/* 自訂連結：可刪除的列 */
+.law-btn-wrap{
+  display:flex;
+  gap:8px;
+  align-items:stretch;
+}
+.law-btn-wrap .law-btn{
+  flex:1;
+  width:auto;
+}
+.remove-btn{
+  flex-shrink:0;
+  width:38px;
+  border:1px solid var(--line);
+  background:#faf9f7;
+  color:var(--muted);
+  border-radius:4px;
+  cursor:pointer;
+  font-size:16px;
+  line-height:1;
+  transition:background 0.2s, color 0.2s, border-color 0.2s;
+}
+.remove-btn:hover{
+  background:var(--error);
+  color:#fff;
+  border-color:var(--error);
+}
+.remove-btn:focus-visible{
+  outline:2px solid var(--error);
+  outline-offset:1px;
+}
+
+/* 新增自訂法規網址表單 */
+.add-card{ margin-bottom:25px; }
+.add-form{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:stretch;
+}
+.add-form select,
+.add-form input{
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:4px;
+  font-family:inherit;
+  font-size:14px;
+  color:var(--text);
+  background:#faf9f7;
+}
+.add-form select{ flex:0 0 170px; }
+.add-form input#custom-label{ flex:1 1 220px; min-width:160px; }
+.add-form input#custom-url{ flex:1 1 240px; min-width:180px; }
+.add-form button{
+  padding:10px 22px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  color:#fff;
+  border-radius:4px;
+  font-family:inherit;
+  font-size:14px;
+  cursor:pointer;
+  flex:0 0 auto;
+  transition:opacity 0.2s;
+}
+.add-form button:hover{ opacity:0.85; }
+.add-form select:focus-visible,
+.add-form input:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:1px;
+}
+@media (max-width:520px){
+  .add-form select,
+  .add-form input{ flex:1 1 100%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .law-btn, .expand-panel, .chevron{ transition:none; }
 }
 </style>
 </head>
@@ -149,9 +326,9 @@ h1{
 <nav class="nav-bar">
   <div class="nav-logo">🏛️ 國考戰情系統</div>
   <div class="nav-links">
-    <a href="#" onclick="window.close(); return false;">主控面板</a>
-    <a href="library.html" class="active">法規與題庫</a>
-    <a href="#" onclick="alert('💡 申論模擬訓練頁預留位置')">申論模擬</a>
+    <a href="index.html">主控面板</a>
+    <a href="library.html" class="active" aria-current="page">法規與題庫</a>
+    <a href="essay.html" onclick="if(!confirm('申論模擬訓練頁尚未建置，是否前往主控面板？'))return false;" >申論模擬</a>
   </div>
 </nav>
 
@@ -159,38 +336,58 @@ h1{
 
 <header>
   <h1>📚 五大專業科目武器庫</h1>
-  <p style="color: var(--muted); margin-top: 5px;">架構對齊主面板，法條與時事精準點選</p>
+  <p class="subtitle">架構對齊主面板，法條與時事精準點選</p>
 </header>
+
+<div class="card add-card">
+  <div class="title">➕ 新增自訂法規網址</div>
+  <p class="note-text">隨時貼上你要查的法規或網站，選好科目後會自動歸到對應卡片裡，並永久保存在這台裝置、這個瀏覽器上。</p>
+  <div class="add-form">
+    <select id="custom-category" aria-label="科目分類">
+      <option value="admin">行政法</option>
+      <option value="welfare">社會福利政策與法規</option>
+      <option value="work">社會工作</option>
+      <option value="soc">社會學</option>
+      <option value="indigenous">原民法規</option>
+      <option value="other">其他／未分類</option>
+    </select>
+    <input type="text" id="custom-label" placeholder="名稱（例如：社會救助法施行細則）" />
+    <input type="url" id="custom-url" placeholder="網址（https://...）" />
+    <button type="button" id="custom-add-btn">新增</button>
+  </div>
+  <p class="save-hint" id="custom-add-hint"></p>
+  <div class="link-list" id="list-other" style="margin-top:12px;"></div>
+</div>
 
 <div class="grid">
 
-  <!-- ⚖️ 左欄：對齊主面板的五大核心科目 -->
+  <!-- ⚖️ 左欄：五大核心科目 -->
   <div>
-    
-    <!-- 1. 行政法（四大核心法典全補齊） -->
+
+    <!-- 1. 行政法 -->
     <div class="card">
       <div class="title">⚖️ 行政法</div>
       <p class="note-text">攻克行政行為、裁罰、執行與終極救濟的四大支柱：</p>
-      <div class="link-list">
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030055" target="_blank" class="law-btn">
+      <div class="link-list" id="list-admin">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030055" target="_blank" rel="noopener" class="law-btn">
           <span>《行政程序法》</span>
           <span class="law-tag">§135行政契約 / 處分</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030250" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030250" target="_blank" rel="noopener" class="law-btn">
           <span>《行政罰法》</span>
-          <span class="law-tag" style="background:#a35d5d;">§26一行為不二罰</span>
+          <span class="law-tag danger">§26一行為不二罰</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030023" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030023" target="_blank" rel="noopener" class="law-btn">
           <span>《行政執行法》</span>
-          <span class="law-tag" style="background:#5da373;">代履行 / 即時強制</span>
+          <span class="law-tag success">代履行 / 即時強制</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030132" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030132" target="_blank" rel="noopener" class="law-btn">
           <span>《訴願法》</span>
           <span class="law-tag">管轄機關認定</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030154" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030154" target="_blank" rel="noopener" class="law-btn">
           <span>《行政訴訟法》</span>
-          <span class="law-tag" style="background:#5d7fa3;">訴訟類型 / 撤銷訴訟</span>
+          <span class="law-tag info">訴訟類型 / 撤銷訴訟</span>
         </a>
       </div>
     </div>
@@ -199,24 +396,24 @@ h1{
     <div class="card">
       <div class="title">👥 社會福利政策與法規</div>
       <p class="note-text">社政核心體系（經濟安全、四大人口群體、長照）：</p>
-      <div class="link-list">
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050136" target="_blank" class="law-btn">
+      <div class="link-list" id="list-welfare">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050136" target="_blank" rel="noopener" class="law-btn">
           <span>《社會救助法》</span>
           <span class="law-tag">生存權保障 / 扶助</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050001" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050001" target="_blank" rel="noopener" class="law-btn">
           <span>《兒童及少年福利與權益保障法》</span>
           <span class="law-tag">兒少權益保障</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050046" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050046" target="_blank" rel="noopener" class="law-btn">
           <span>《身心障礙者權益保障法》</span>
           <span class="law-tag">身障福利 / CRPD</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050115" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050115" target="_blank" rel="noopener" class="law-btn">
           <span>《老人福利法》</span>
           <span class="law-tag">高齡化對策</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050171" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050171" target="_blank" rel="noopener" class="law-btn">
           <span>《長期照顧服務法》</span>
           <span class="law-tag">長照體系整合</span>
         </a>
@@ -226,17 +423,17 @@ h1{
     <!-- 3. 社會工作 -->
     <div class="card">
       <div class="title">🤝 社會工作</div>
-      <p class="note-text">專業倫理、危機 Intervention 與社區工作實務基礎法規：</p>
-      <div class="link-list">
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050125" target="_blank" class="law-btn">
+      <p class="note-text">專業倫理、危機介入與社區工作實務基礎法規：</p>
+      <div class="link-list" id="list-work">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050125" target="_blank" rel="noopener" class="law-btn">
           <span>《社會工作師法》</span>
-          <span class="law-tag" style="background:#5da373;">執業專業與倫理</span>
+          <span class="law-tag success">執業專業與倫理</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050013" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050013" target="_blank" rel="noopener" class="law-btn">
           <span>《家庭暴力防治法》</span>
           <span class="law-tag">危機介入 / 保護令</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050165" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0050165" target="_blank" rel="noopener" class="law-btn">
           <span>《志願服務法》</span>
           <span class="law-tag">社區資源連結</span>
         </a>
@@ -247,15 +444,19 @@ h1{
     <div class="card">
       <div class="title">🌐 社會學</div>
       <p class="note-text">申論時事焦點（文化資本、全球化、社會不平等）：</p>
-      <div class="link-list">
-        <a href="https://www.stat.gov.tw" target="_blank" class="law-btn">
+      <div class="link-list expand-wrap" id="list-soc">
+        <a href="https://www.stat.gov.tw" target="_blank" rel="noopener" class="law-btn">
           <span>主計總處全球資訊網（最新統計指標）</span>
-          <span class="law-tag" style="background:#5d7fa3;">社會時事數據</span>
+          <span class="database-tag">社會時事數據</span>
         </a>
-        <a href="#" onclick="alert('💡 申論提示：全球化對原民文化的衝擊，應結合布迪厄『象徵資本與文化階層化』進行申論批判！')" class="law-btn">
+        <button type="button" class="law-btn" data-expand="soc-theory" aria-expanded="false">
           <span>💡 社會學經典理論申論破題要領</span>
-          <span class="law-tag" style="background:#c9b097;">申論骨架</span>
-        </a>
+          <span class="law-tag accent">申論骨架</span>
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="expand-panel" id="soc-theory">
+          <p>申論提示：全球化對原民文化的衝擊，可結合布迪厄「象徵資本與文化階層化」概念進行批判性論述，並對照本土脈絡舉例說明。</p>
+        </div>
       </div>
     </div>
 
@@ -263,12 +464,12 @@ h1{
     <div class="card">
       <div class="title">🏹 原民法規</div>
       <p class="note-text">原民特考決勝關鍵（原住民族主體性與教育保障）：</p>
-      <div class="link-list">
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0170001" target="_blank" class="law-btn">
+      <div class="link-list" id="list-indigenous">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=H0170001" target="_blank" rel="noopener" class="law-btn">
           <span>《原住民族教育法》</span>
-          <span class="law-tag" style="background:#a35d5d;">民族/實驗教育</span>
+          <span class="law-tag danger">民族/實驗教育</span>
         </a>
-        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0130001" target="_blank" class="law-btn">
+        <a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0130001" target="_blank" rel="noopener" class="law-btn">
           <span>《原住民族基本法》</span>
           <span class="law-tag">原民最高總綱</span>
         </a>
@@ -282,33 +483,201 @@ h1{
     <div class="card">
       <div class="title">🎯 題庫與線上刷題</div>
       <p class="note-text">外部測驗平台與個人進度資源：</p>
-      
+
       <div class="link-list">
-        <a href="https://yamol.tw" target="_blank" class="law-btn">
+        <a href="https://yamol.tw" target="_blank" rel="noopener" class="law-btn">
           <span>阿摩線上測驗</span>
           <span class="database-tag">選擇題狂刷</span>
         </a>
-        <a href="https://www.public.com.tw/exam-test" target="_blank" class="law-btn">
+        <a href="https://www.public.com.tw/exam-test" target="_blank" rel="noopener" class="law-btn">
           <span>公職王歷屆試題下載</span>
           <span class="database-tag">考古題 PDF</span>
         </a>
-        <a href="#" onclick="alert('💡 提示：可將此處替換為你的雲端錯題本網址！')" class="law-btn">
-          <span>個人申論題錯題本 (雲端硬碟)</span>
+
+        <div id="errorbook-link" class="law-btn" style="display:none;">
+          <span id="errorbook-label">個人申論題錯題本</span>
           <span class="database-tag">私房資源</span>
-        </a>
+        </div>
+        <div class="custom-link-row" id="errorbook-setup">
+          <input type="url" id="errorbook-input" placeholder="貼上你的雲端錯題本網址（例如 Google Drive 連結）" />
+          <button type="button" id="errorbook-save">儲存</button>
+        </div>
+        <p class="save-hint" id="errorbook-hint"></p>
       </div>
     </div>
-    
-    <div class="card" style="background: #f3f0ec;">
-      <div class="title" style="border-left-color: var(--error);">💡 備考指揮官碎碎念</div>
-      <p style="font-size: 15px; margin: 0; color: var(--text); text-align: justify;">
-        **行政法高分心法：** 申論題如果考出行政機關對人民處分後的後續追討（如溢領補貼），記得從《行政程序法》不當得利開始，一路鋪陳到《行政執行法》的公法上金錢給付義務執行；如果人民不服，則要懂得切換到《訴願法》與《行政訴訟法》的撤銷訴訟。法典之間的連貫性，就是三等上榜的關鍵！
+
+    <div class="card" style="background:#f3f0ec;">
+      <div class="title" style="border-left-color:var(--error);">💡 備考指揮官碎碎念</div>
+      <p style="font-size:15px;margin:0;color:var(--text);text-align:justify;">
+        <strong>行政法高分心法：</strong> 申論題如果考出行政機關對人民處分後的後續追討（如溢領補貼），記得從《行政程序法》不當得利開始，一路鋪陳到《行政執行法》的公法上金錢給付義務執行；如果人民不服，則要懂得切換到《訴願法》與《行政訴訟法》的撤銷訴訟。法典之間的連貫性，就是三等上榜的關鍵！
       </p>
     </div>
   </div>
 
 </div>
 </div>
+
+<script>
+// 展開式提示卡：取代原本的 alert() 彈窗
+document.querySelectorAll('[data-expand]').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var panel = document.getElementById(btn.getAttribute('data-expand'));
+    var isOpen = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+});
+
+// 個人錯題本連結：第一次貼上網址後存在本機瀏覽器，之後直接顯示為可點擊按鈕
+(function(){
+  var STORAGE_KEY = 'examLibrary.errorbookUrl';
+  var linkEl = document.getElementById('errorbook-link');
+  var labelEl = document.getElementById('errorbook-label');
+  var setupEl = document.getElementById('errorbook-setup');
+  var inputEl = document.getElementById('errorbook-input');
+  var saveBtn = document.getElementById('errorbook-save');
+  var hintEl = document.getElementById('errorbook-hint');
+
+  function renderSaved(url){
+    linkEl.outerHTML = '<a href="' + url.replace(/"/g,'&quot;') + '" target="_blank" rel="noopener" class="law-btn" id="errorbook-link">' +
+      '<span id="errorbook-label">個人申論題錯題本</span><span class="database-tag">私房資源</span></a>';
+    setupEl.style.display = 'none';
+  }
+
+  try{
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      renderSaved(saved);
+    } else {
+      linkEl.style.display = 'none';
+    }
+  }catch(e){ /* localStorage 不可用時，保留輸入框讓使用者照樣可貼網址 */ }
+
+  saveBtn.addEventListener('click', function(){
+    var url = inputEl.value.trim();
+    if (!url) { hintEl.textContent = '請先貼上網址再儲存'; return; }
+    try{
+      localStorage.setItem(STORAGE_KEY, url);
+      hintEl.textContent = '已儲存，之後會直接顯示為按鈕';
+      setTimeout(function(){ renderSaved(url); }, 600);
+    }catch(e){
+      hintEl.textContent = '此瀏覽器不支援儲存，但你仍可手動貼上開啟';
+      window.open(url, '_blank', 'noopener');
+    }
+  });
+})();
+
+// 自訂法規／網址：選好科目即可新增，永久存在本機，並可隨時刪除
+(function(){
+  var STORAGE_KEY = 'examLibrary.customLawLinks';
+  var listMap = {
+    admin: document.getElementById('list-admin'),
+    welfare: document.getElementById('list-welfare'),
+    work: document.getElementById('list-work'),
+    soc: document.getElementById('list-soc'),
+    indigenous: document.getElementById('list-indigenous'),
+    other: document.getElementById('list-other')
+  };
+  var tagClassMap = {
+    admin: '', welfare: 'info', work: 'success', soc: 'accent', indigenous: 'danger', other: 'muted'
+  };
+
+  function loadAll(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    }catch(e){ return []; }
+  }
+  function saveAll(items){
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); }catch(e){ /* 儲存空間不足或被封鎖時，至少畫面上仍可使用 */ }
+  }
+  function escapeHtml(str){
+    return str.replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function renderItem(item){
+    var container = listMap[item.category] || listMap.other;
+    if (!container) return;
+
+    var wrap = document.createElement('div');
+    wrap.className = 'law-btn-wrap';
+    wrap.dataset.id = item.id;
+
+    var tagCls = tagClassMap[item.category] ? ' ' + tagClassMap[item.category] : '';
+    var a = document.createElement('a');
+    a.href = item.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'law-btn';
+    a.innerHTML = '<span>' + escapeHtml(item.label) + '</span><span class="law-tag' + tagCls + '">自訂</span>';
+
+    var delBtn = document.createElement('button');
+    delBtn.type = 'button';
+    delBtn.className = 'remove-btn';
+    delBtn.setAttribute('aria-label', '刪除「' + item.label + '」這個自訂連結');
+    delBtn.textContent = '×';
+    delBtn.addEventListener('click', function(){
+      wrap.remove();
+      saveAll(loadAll().filter(function(i){ return i.id !== item.id; }));
+    });
+
+    wrap.appendChild(a);
+    wrap.appendChild(delBtn);
+    container.appendChild(wrap);
+  }
+
+  loadAll().forEach(renderItem);
+
+  var categorySelect = document.getElementById('custom-category');
+  var labelInput = document.getElementById('custom-label');
+  var urlInput = document.getElementById('custom-url');
+  var addBtn = document.getElementById('custom-add-btn');
+  var addHint = document.getElementById('custom-add-hint');
+
+  function showHint(msg, ok){
+    addHint.textContent = msg;
+    addHint.style.color = ok ? 'var(--success)' : 'var(--error)';
+  }
+
+  addBtn.addEventListener('click', function(){
+    var label = labelInput.value.trim();
+    var url = urlInput.value.trim();
+
+    if (!label || !url){
+      showHint('請填入名稱與網址', false);
+      return;
+    }
+    if (!/^https?:\/\//i.test(url)){
+      showHint('網址需以 http:// 或 https:// 開頭', false);
+      return;
+    }
+
+    var item = {
+      id: 'c' + Date.now() + Math.random().toString(36).slice(2, 7),
+      label: label,
+      url: url,
+      category: categorySelect.value
+    };
+    var items = loadAll();
+    items.push(item);
+    saveAll(items);
+    renderItem(item);
+
+    labelInput.value = '';
+    urlInput.value = '';
+    showHint('已新增並儲存到「' + categorySelect.selectedOptions[0].text + '」', true);
+    setTimeout(function(){ addHint.textContent = ''; }, 2500);
+  });
+
+  // Enter 鍵也可直接送出
+  [labelInput, urlInput].forEach(function(input){
+    input.addEventListener('keydown', function(e){
+      if (e.key === 'Enter'){ addBtn.click(); }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
