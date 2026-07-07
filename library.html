@@ -87,6 +87,7 @@ h1{
   display:grid;
   grid-template-columns:1.2fr 0.8fr;
   gap:30px;
+  align-items:start;
 }
 @media (max-width:900px){
   .grid{ grid-template-columns:1fr; }
@@ -403,8 +404,62 @@ h1{
   .add-form input{ flex:1 1 100%; }
 }
 
+/* 🗂️ 科目分頁（NotebookLM 式方塊點選，取代下滑捲動） */
+.subject-tabs{
+  display:grid;
+  grid-template-columns:repeat(5, 1fr);
+  gap:10px;
+  margin-bottom:20px;
+}
+@media (max-width:700px){
+  .subject-tabs{ grid-template-columns:repeat(2, 1fr); }
+}
+.subject-tab{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  padding:16px 10px;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:8px;
+  cursor:pointer;
+  font-family:inherit;
+  text-align:center;
+  transition:background 0.2s ease, border-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.subject-tab .tab-icon{ font-size:22px; line-height:1; }
+.subject-tab .tab-label{ font-size:14.5px; color:var(--text); font-weight:500; }
+.subject-tab .tab-count{ font-size:11.5px; color:var(--muted); }
+.subject-tab:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+}
+.subject-tab:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+.subject-tab.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 4px 14px rgba(140,123,110,0.35);
+}
+.subject-tab.active .tab-label,
+.subject-tab.active .tab-count{ color:#fff; }
+
+.subject-panel{ display:none; }
+.subject-panel.active{
+  display:block;
+  animation:panelFade 0.18s ease;
+}
+@keyframes panelFade{
+  from{ opacity:0; transform:translateY(6px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce){
-  .law-btn, .expand-panel, .chevron{ transition:none; }
+  .law-btn, .expand-panel, .chevron, .subject-tab, .subject-panel{ transition:none; animation:none; }
 }
 </style>
 </head>
@@ -424,12 +479,12 @@ h1{
 
 <header>
   <h1>📚 五大專業科目武器庫</h1>
-  <p class="subtitle">架構對齊主面板，法條與時事精準點選</p>
+  <p class="subtitle">點選科目方塊直接切換，不用再往下滑</p>
 </header>
 
 <div class="card add-card">
   <div class="title">➕ 新增自訂法規網址</div>
-  <p class="note-text">隨時貼上你要查的法規或網站，選好科目後會自動歸到對應卡片裡，並永久保存在這台裝置、這個瀏覽器上。</p>
+  <p class="note-text">隨時貼上你要查的法規或網站，選好科目後會自動歸到對應分頁裡，並永久保存在這台裝置、這個瀏覽器上。</p>
   <div class="add-form">
     <select id="custom-category" aria-label="科目分類">
       <option value="admin">行政法</option>
@@ -449,11 +504,39 @@ h1{
 
 <div class="grid">
 
-  <!-- ⚖️ 左欄：五大核心科目 -->
+  <!-- ⚖️ 左欄：五大核心科目（分頁式） -->
   <div>
 
+    <div class="subject-tabs" role="tablist" aria-label="五大科目">
+      <button type="button" class="subject-tab active" role="tab" aria-selected="true" aria-controls="panel-admin" id="tab-admin" data-subject="admin">
+        <span class="tab-icon">⚖️</span>
+        <span class="tab-label">行政法</span>
+        <span class="tab-count">5 法規</span>
+      </button>
+      <button type="button" class="subject-tab" role="tab" aria-selected="false" aria-controls="panel-welfare" id="tab-welfare" data-subject="welfare">
+        <span class="tab-icon">👥</span>
+        <span class="tab-label">社會福利政策與法規</span>
+        <span class="tab-count">10 法規</span>
+      </button>
+      <button type="button" class="subject-tab" role="tab" aria-selected="false" aria-controls="panel-work" id="tab-work" data-subject="work">
+        <span class="tab-icon">🤝</span>
+        <span class="tab-label">社會工作</span>
+        <span class="tab-count">2 法規</span>
+      </button>
+      <button type="button" class="subject-tab" role="tab" aria-selected="false" aria-controls="panel-soc" id="tab-soc" data-subject="soc">
+        <span class="tab-icon">🌐</span>
+        <span class="tab-label">社會學</span>
+        <span class="tab-count">時事＋理論</span>
+      </button>
+      <button type="button" class="subject-tab" role="tab" aria-selected="false" aria-controls="panel-indigenous" id="tab-indigenous" data-subject="indigenous">
+        <span class="tab-icon">🏹</span>
+        <span class="tab-label">原民法規</span>
+        <span class="tab-count">2 法規</span>
+      </button>
+    </div>
+
     <!-- 1. 行政法 -->
-    <div class="card">
+    <div class="card subject-panel active" id="panel-admin" role="tabpanel" aria-labelledby="tab-admin" data-subject-panel="admin">
       <div class="title">⚖️ 行政法</div>
       <p class="note-text">攻克行政行為、裁罰、執行與終極救濟的四大支柱：</p>
       <div class="link-list" id="list-admin">
@@ -481,7 +564,7 @@ h1{
     </div>
 
     <!-- 2. 社會福利政策與法規 -->
-    <div class="card">
+    <div class="card subject-panel" id="panel-welfare" role="tabpanel" aria-labelledby="tab-welfare" data-subject-panel="welfare">
       <div class="title">👥 社會福利政策與法規</div>
       <p class="note-text">社政核心體系（經濟安全、四大人口群體、長照）：</p>
       <div class="link-list" id="list-welfare">
@@ -529,7 +612,7 @@ h1{
     </div>
 
     <!-- 3. 社會工作 -->
-    <div class="card">
+    <div class="card subject-panel" id="panel-work" role="tabpanel" aria-labelledby="tab-work" data-subject-panel="work">
       <div class="title">🤝 社會工作</div>
       <p class="note-text">專業倫理、危機介入與社區工作實務基礎法規：</p>
       <div class="link-list" id="list-work">
@@ -545,7 +628,7 @@ h1{
     </div>
 
     <!-- 4. 社會學 -->
-    <div class="card">
+    <div class="card subject-panel" id="panel-soc" role="tabpanel" aria-labelledby="tab-soc" data-subject-panel="soc">
       <div class="title">🌐 社會學</div>
       <p class="note-text">申論時事焦點（文化資本、全球化、社會不平等）：</p>
       <div class="link-list expand-wrap" id="list-soc">
@@ -565,7 +648,7 @@ h1{
     </div>
 
     <!-- 5. 原民法規 -->
-    <div class="card">
+    <div class="card subject-panel" id="panel-indigenous" role="tabpanel" aria-labelledby="tab-indigenous" data-subject-panel="indigenous">
       <div class="title">🏹 原民法規</div>
       <p class="note-text">原民特考決勝關鍵（原住民族主體性與教育保障）：</p>
       <div class="link-list" id="list-indigenous">
@@ -627,6 +710,52 @@ h1{
 </div>
 
 <script>
+// 科目分頁切換（取代下滑捲動），並記住上次選的科目
+(function(){
+  var STORAGE_KEY = 'examLibrary.activeSubject';
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.subject-tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.subject-panel'));
+
+  function activate(subject){
+    tabs.forEach(function(tab){
+      var isActive = tab.dataset.subject === subject;
+      tab.classList.toggle('active', isActive);
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    panels.forEach(function(panel){
+      var isActive = panel.dataset.subjectPanel === subject;
+      panel.classList.toggle('active', isActive);
+    });
+    try{ localStorage.setItem(STORAGE_KEY, subject); }catch(e){ /* 忽略儲存失敗 */ }
+  }
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){ activate(tab.dataset.subject); });
+  });
+
+  // 方向鍵切換分頁（左右鍵），符合 tab 慣例操作
+  var tabList = document.querySelector('.subject-tabs');
+  tabList.addEventListener('keydown', function(e){
+    var idx = tabs.indexOf(document.activeElement);
+    if (idx === -1) return;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown'){
+      e.preventDefault();
+      var next = tabs[(idx + 1) % tabs.length];
+      next.focus(); next.click();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp'){
+      e.preventDefault();
+      var prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+      prev.focus(); prev.click();
+    }
+  });
+
+  var saved = null;
+  try{ saved = localStorage.getItem(STORAGE_KEY); }catch(e){}
+  if (saved && tabs.some(function(t){ return t.dataset.subject === saved; })){
+    activate(saved);
+  }
+})();
+
 // 展開式提示卡：取代原本的 alert() 彈窗
 document.querySelectorAll('[data-expand]').forEach(function(btn){
   btn.addEventListener('click', function(){
