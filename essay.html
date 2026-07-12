@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>原特三等社會行政｜申論模擬訓練</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fbfaf8;
+      --card: #ffffff;
+      --text: #2f2b28;
+      --muted: #857c74;
+      --line: #e7e3df;
+      --accent: #8c7b6e;
+      --accent-soft: #f3f0ec;
+      --error: #a35d5d;
+      --success: #5d8068;
+      --warning: #967b4f;
+      --shadow: 0 5px 18px rgba(50, 44, 39, 0.035);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .nav-bar {
+      background: #2f2b28;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .nav-logo {
+      color: #fff;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      color: #e7e3df;
+      text-decoration: none;
+      font-size: 14px;
+      padding: 3px 0;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #c9b097;
+      border-bottom: 2px solid #c9b097;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 30px 20px 50px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      margin: 8px 0 5px;
+      font-weight: 500;
+      font-size: 31px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .exam-callout {
+      max-width: 760px;
+      margin: 18px auto 0;
+      padding: 15px 18px;
+      background: var(--accent-soft);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-left: 10px;
+      border-left: 4px solid var(--accent);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .card-note {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      background: #faf9f7;
+      color: var(--text);
+      outline: none;
+    }
+
+    .form-control:focus {
+      background: #fff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(140, 123, 110, 0.08);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+      line-height: 1.7;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      background: var(--accent);
+      color: #fff;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn:hover { opacity: 0.9; }
+    .btn:active { transform: translateY(1px); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .btn-secondary {
+      background: #a89a8d;
+    }
+
+    .btn-light {
+      background: #f1eeea;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+
+    .btn-success { background: var(--success); }
+    .btn-error { background: var(--error); }
+
+    .question-box {
+      padding: 20px;
+      background: #f7f4f0;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--accent);
+    }
+
+    .question-title {
+      margin-bottom: 8px;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .question-prompt {
+      white-space: pre-wrap;
+      font-size: 17px;
+    }
+
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 13px;
+    }
+
+    .tag {
+      padding: 3px 8px;
+      background: #ebe6e0;
+      color: #625a54;
+      font-size: 12px;
+      border: 1px solid #dfd8d1;
+    }
+
+    .phase-card {
+      margin-top: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .phase-header {
+      padding: 11px 14px;
+      background: #faf8f5;
+      border-bottom: 1px solid var(--line);
+      font-weight: 700;
+    }
+
+    .phase-body {
+      padding: 14px;
+    }
+
+    .answer-area {
+      min-height: 420px !important;
+      font-family: "Noto Serif TC", serif;
+    }
+
+    .answer-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mini-progress {
+      width: 180px;
+      height: 7px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .mini-progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .timer-card {
+      position: sticky;
+      top: 72px;
+    }
+
+    .timer-display {
+      text-align: center;
+      font-size: 48px;
+      line-height: 1.1;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin: 12px 0 8px;
+      color: var(--text);
+    }
+
+    .timer-stage {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      min-height: 24px;
+    }
+
+    .timer-progress {
+      height: 9px;
+      background: var(--line);
+      overflow: hidden;
+      margin: 13px 0;
+    }
+
+    .timer-progress > span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--error));
+      transition: width 0.5s linear;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 14px;
+    }
+
+    .check-item input {
+      margin-top: 5px;
+      transform: scale(1.12);
+      accent-color: var(--accent);
+    }
+
+    .hint-box {
+      display: none;
+      margin-top: 10px;
+      padding: 11px 12px;
+      background: #fffcf7;
+      border: 1px dashed #d8cec3;
+      color: #5d554e;
+      font-size: 14px;
+    }
+
+    .hint-box.visible { display: block; }
+
+    .finish-panel,
+    .score-panel,
+    .outline-panel {
+      display: none;
+    }
+
+    .visible-panel { display: block; }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .score-item {
+      padding: 12px;
+      border: 1px solid var(--line);
+      background: #faf9f7;
+    }
+
+    .score-item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
+
+    .score-item input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .score-total {
+      margin: 16px 0;
+      padding: 15px;
+      text-align: center;
+      background: var(--accent-soft);
+      border: 1px solid var(--line);
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .model-outline {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .model-outline li {
+      margin-bottom: 8px;
+    }
+
+    .history-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .history-item:last-child { border-bottom: 0; }
+
+    .history-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .history-score {
+      min-width: 48px;
+      text-align: center;
+      font-weight: 700;
+      color: var(--success);
+    }
+
+    .history-meta {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+    }
+
+    .empty-state {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      padding: 18px 0;
+    }
+
+    .status-message {
+      display: none;
+      margin-top: 10px;
+      padding: 9px 11px;
+      font-size: 14px;
+    }
+
+    .status-message.show { display: block; }
+    .status-message.success { background: #f1f7f2; color: var(--success); }
+    .status-message.error { background: #fbf1f1; color: var(--error); }
+
+    details.custom-question {
+      margin-top: 14px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    details.custom-question summary {
+      cursor: pointer;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timer-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav-bar {
+        flex-direction: column;
+        gap: 8px;
+        padding: 11px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .container { padding: 18px 10px 35px; }
+      h1 { font-size: 24px; }
+      .form-grid, .score-grid { grid-template-columns: 1fr; }
+      .card { padding: 17px; }
+      .timer-display { font-size: 42px; }
+      .answer-area { min-height: 330px !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav-bar">
+    <div class="nav-logo">🏛️ 國考戰情系統</div>
+    <div class="nav-links">
+      <a href="index.html">主控面板</a>
+      <a href="library.html" target="_blank">法規與題庫</a>
+      <a href="https://docs.google.com/spreadsheets/d/1EdDZzI2Pe98d0Z4c5rltDHcH9XWcz0AopuvjtCDWDjs/edit?gid=0#gid=0" target="_blank">📊 讀書計畫記錄表</a>
+      <a href="essay.html" class="active">申論模擬</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <header>
+      <h1>原特三等｜申論模擬訓練室</h1>
+      <div class="subtitle">先獨立輸出，再對照修正。每一題只抓一個最需要改善的地方。</div>
+      <div class="exam-callout" id="exam-callout">🎯 正在計算考前剩餘時間……</div>
+    </header>
+
+    <div class="main-grid">
+      <section>
+        <div class="card">
+          <div class="card-title">
+            <span>一、模擬設定</span>
+            <span class="card-note">選題後會自動載入未完成草稿</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="mode-select">訓練模式</label>
+              <select id="mode-select" class="form-control">
+                <option value="12">骨架模式｜12 分鐘</option>
+                <option value="25">半題模式｜25 分鐘</option>
+                <option value="40" selected>全真模式｜40 分鐘</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="subject-filter">科目</label>
+              <select id="subject-filter" class="form-control">
+                <option value="全部">全部科目</option>
+                <option value="行政法">行政法</option>
+                <option value="社會福利政策與法規">社會福利政策與法規</option>
+                <option value="社會工作">社會工作</option>
+                <option value="社會學">社會學</option>
+                <option value="原住民族行政及法規">原住民族行政及法規</option>
+                <option value="跨科整合">跨科整合</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="type-filter">題型</label>
+              <select id="type-filter" class="form-control">
+                <option value="全部">全部題型</option>
+                <option value="法條爭點">法條爭點</option>
+                <option value="比較題">比較題</option>
+                <option value="政策評析">政策評析</option>
+                <option value="理論分析">理論分析</option>
+                <option value="實務情境">實務情境</option>
+                <option value="原鄉整合題">原鄉整合題</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="question-select">題目</label>
+              <select id="question-select" class="form-control"></select>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn" id="load-question-btn">載入所選題目</button>
+            <button class="btn btn-secondary" id="random-question-btn">隨機抽題</button>
+            <button class="btn btn-light" id="clear-draft-btn">清除本題草稿</button>
+          </div>
+
+          <details class="custom-question">
+            <summary>＋ 新增自訂題目</summary>
+            <div class="form-grid" style="margin-top: 12px;">
+              <div class="form-group">
+                <label for="custom-subject">科目</label>
+                <select id="custom-subject" class="form-control">
+                  <option>行政法</option>
+                  <option>社會福利政策與法規</option>
+                  <option>社會工作</option>
+                  <option>社會學</option>
+                  <option>原住民族行政及法規</option>
+                  <option>跨科整合</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="custom-type">題型</label>
+                <select id="custom-type" class="form-control">
+                  <option>法條爭點</option>
+                  <option>比較題</option>
+                  <option>政策評析</option>
+                  <option>理論分析</option>
+                  <option>實務情境</option>
+                  <option>原鄉整合題</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label for="custom-title">簡短題名</label>
+              <input id="custom-title" class="form-control" placeholder="例如：行政契約與行政處分比較">
+            </div>
+            <div class="form-group" style="margin-top: 10px;">
+              <label for="custom-prompt">完整題目</label>
+              <textarea id="custom-prompt" class="form-control" placeholder="貼上完整申論題目"></textarea>
+            </div>
+            <button class="btn btn-secondary" id="save-custom-question-btn">儲存並載入自訂題目</button>
+          </details>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <span>二、正式題目</span>
+            <span class="card-note" id="question-origin">內建題庫</span>
+          </div>
+
+          <div class="question-box">
+            <div class="question-title" id="question-title">請先選擇題目</div>
+            <div class="question-prompt" id="question-prompt">選擇科目與題型後，按下「載入所選題目」。</div>
+            <div class="meta-row" id="question-meta"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <span>三、三階段審題與作答</span>
+            <span class="card-note">系統會自動保存本題草稿</span>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-header">① 抓題眼｜本題究竟問了什麼？</div>
+            <div class="phase-body">
+              <textarea id="keywords-input" class="form-control" rows="5" placeholder="建議寫：核心名詞、題目要求、限定情境、必須回答的子問題……"></textarea>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-header">② 列骨架｜只寫標題、法條、理論與關鍵詞</div>
+            <div class="phase-body">
+              <textarea id="outline-input" class="form-control" rows="8" placeholder="一、前言／概念界定\n二、法條或理論依據\n三、問題分析或法律涵攝\n四、實務困境\n五、建議與結論"></textarea>
+            </div>
+          </div>
+
+          <div class="phase-card">
+            <div class="phase-header">③ 完整作答｜依模式決定寫骨架、半題或全文</div>
+            <div class="phase-body">
+              <textarea id="answer-input" class="form-control answer-area" placeholder="從這裡開始作答。先求完整回應題意，再追求漂亮文字。"></textarea>
+              <div class="answer-footer">
+                <span id="word-count">0 字</span>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span id="writing-target-text">目標約 1,000 字</span>
+                  <div class="mini-progress"><span id="writing-progress"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-success" id="finish-answer-btn">完成作答，進入自評</button>
+            <button class="btn btn-light" id="save-draft-btn">立即儲存草稿</button>
+          </div>
+          <div id="draft-status" class="status-message"></div>
+        </div>
+
+        <div class="card outline-panel" id="model-outline-panel">
+          <div class="card-title">
+            <span>四、建議骨架對照</span>
+            <span class="card-note">交卷後才顯示</span>
+          </div>
+          <ol id="model-outline-list" class="model-outline"></ol>
+        </div>
+
+        <div class="card score-panel" id="score-panel">
+          <div class="card-title">
+            <span>五、自我評分與一題一修正</span>
+            <span class="card-note">總分 100 分</span>
+          </div>
+
+          <div class="score-grid">
+            <div class="score-item">
+              <div class="score-item-top"><span>審題正確</span><b><span id="score-reading-value">10</span>/20</b></div>
+              <input class="score-range" id="score-reading" type="range" min="0" max="20" value="10">
+            </div>
+            <div class="score-item">
+              <div class="score-item-top"><span>架構清楚</span><b><span id="score-structure-value">10</span>/20</b></div>
+              <input class="score-range" id="score-structure" type="range" min="0" max="20" value="10">
+            </div>
+            <div class="score-item">
+              <div class="score-item-top"><span>法條／理論</span><b><span id="score-theory-value">10</span>/20</b></div>
+              <input class="score-range" id="score-theory" type="range" min="0" max="20" value="10">
+            </div>
+            <div class="score-item">
+              <div class="score-item-top"><span>分析與涵攝</span><b><span id="score-analysis-value">10</span>/20</b></div>
+              <input class="score-range" id="score-analysis" type="range" min="0" max="20" value="10">
+            </div>
+            <div class="score-item">
+              <div class="score-item-top"><span>結論與建議</span><b><span id="score-conclusion-value">8</span>/15</b></div>
+              <input class="score-range" id="score-conclusion" type="range" min="0" max="15" value="8">
+            </div>
+            <div class="score-item">
+              <div class="score-item-top"><span>時間控制</span><b><span id="score-time-value">3</span>/5</b></div>
+              <input class="score-range" id="score-time" type="range" min="0" max="5" value="3">
+            </div>
+          </div>
+
+          <div class="score-total">本題自評：<span id="total-score">51</span> 分</div>
+
+          <div class="form-group">
+            <label for="weakness-input">本題最大的問題</label>
+            <textarea id="weakness-input" class="form-control" rows="3" placeholder="例如：知道概念，但沒有把理論套回題目情境。"></textarea>
+          </div>
+
+          <div class="form-group" style="margin-top: 12px;">
+            <label for="next-fix-input">下次必須補上的內容</label>
+            <textarea id="next-fix-input" class="form-control" rows="3" placeholder="例如：先列出各層系統，再分別對應原鄉高齡者的問題。"></textarea>
+          </div>
+
+          <div class="form-group" style="margin-top: 12px;">
+            <label for="memory-sentence-input">一句可以直接帶進考場的句子</label>
+            <textarea id="memory-sentence-input" class="form-control" rows="3" placeholder="寫下一句值得背熟的法條句、理論句或結論句。"></textarea>
+          </div>
+
+          <div class="button-row">
+            <button class="btn btn-success" id="save-record-btn">儲存本次模擬紀錄</button>
+            <button class="btn btn-light" id="restart-question-btn">同題重新練習</button>
+          </div>
+          <div id="record-status" class="status-message"></div>
+        </div>
+      </section>
+
+      <aside>
+        <div class="card timer-card">
+          <div class="card-title">
+            <span>⏱ 考場計時</span>
+            <span class="card-note" id="mode-label">全真模式</span>
+          </div>
+
+          <div class="timer-display" id="timer-display">40:00</div>
+          <div class="timer-stage" id="timer-stage">尚未開始｜先讀題，不要急著下筆</div>
+          <div class="timer-progress"><span id="timer-progress-bar"></span></div>
+
+          <div class="button-row" style="justify-content:center;">
+            <button class="btn btn-success" id="start-timer-btn">開始</button>
+            <button class="btn btn-secondary" id="pause-timer-btn">暫停</button>
+            <button class="btn btn-light" id="reset-timer-btn">重設</button>
+          </div>
+
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+
+          <div class="card-title" style="font-size:16px; margin-bottom:12px;">
+            <span>作答即時檢核</span>
+          </div>
+          <div class="check-list" id="check-list">
+            <label class="check-item"><input type="checkbox">已定義核心概念</label>
+            <label class="check-item"><input type="checkbox">已回應全部題目要求</label>
+            <label class="check-item"><input type="checkbox">已引用法條或理論</label>
+            <label class="check-item"><input type="checkbox">已進行情境分析或涵攝</label>
+            <label class="check-item"><input type="checkbox">已提出具體建議或結論</label>
+          </div>
+
+          <hr style="border:0; border-top:1px solid var(--line); margin:20px 0;">
+
+          <div class="card-title" style="font-size:16px; margin-bottom:12px;">
+            <span>分段提示</span>
+            <span class="card-note">已用 <span id="hint-count">0</span> 次</span>
+          </div>
+          <button class="btn btn-light" id="hint-btn">顯示下一個提示</button>
+          <div class="hint-box" id="hint-1"></div>
+          <div class="hint-box" id="hint-2"></div>
+          <div class="hint-box" id="hint-3"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">
+            <span>最近模擬紀錄</span>
+            <span class="card-note"><span id="history-count">0</span> 筆</span>
+          </div>
+          <div id="history-list" class="empty-state">尚未建立模擬紀錄</div>
+          <div class="button-row">
+            <button class="btn btn-light" id="export-history-btn">匯出 JSON</button>
+            <button class="btn btn-error" id="clear-history-btn">清空紀錄</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    "use strict";
+
+    const STORAGE_KEYS = {
+      history: "essay_simulator_history_v1",
+      drafts: "essay_simulator_drafts_v1",
+      customQuestions: "essay_simulator_custom_questions_v1"
+    };
+
+    const builtInQuestions = [
+      {
+        id: "admin-contract-compare",
+        source: "內建題庫",
+        subject: "行政法",
+        type: "比較題",
+        title: "行政契約與行政處分比較",
+        prompt: "請比較行政處分與行政契約之概念、成立方式、法律性質及救濟途徑。",
+        ability: "概念比較、法條引用、救濟體系",
+        hints: [
+          "先從單方行政行為與雙方意思表示合致切入。",
+          "可引用行政程序法第92條及第135條以下規定。",
+          "建議依概念、成立、效力、常見類型及救濟方式分段比較。"
+        ],
+        outline: [
+          "前言：行政機關可透過單方行政處分或雙方行政契約完成行政任務。",
+          "行政處分：行政程序法第92條之定義、單方性與對外法律效果。",
+          "行政契約：行政程序法第135條以下、基於雙方意思表示合致成立。",
+          "比較成立方式、法律性質、內容形成及常見實例。",
+          "救濟：行政處分通常經訴願及行政訴訟；行政契約爭議原則上循行政訴訟處理。",
+          "結論：應依行政作用本質與法規要求判斷所採形式。"
+        ]
+      },
+      {
+        id: "admin-trust-protection",
+        source: "內建題庫",
+        subject: "行政法",
+        type: "法條爭點",
+        title: "違法行政處分撤銷與信賴保護",
+        prompt: "某主管機關發現其先前作成之授益行政處分違法，擬依職權撤銷。請說明撤銷之法源、信賴保護之判斷及法律效果。",
+        ability: "法條操作、要件分析、法律涵攝",
+        hints: [
+          "先區分授益處分與負擔處分，再處理撤銷權。",
+          "留意行政程序法第117條、第119條及第120條。",
+          "架構可分為撤銷原則、信賴不值得保護、值得保護時的衡量與補償。"
+        ],
+        outline: [
+          "界定本案為違法授益行政處分之職權撤銷問題。",
+          "說明行政程序法第117條之撤銷原則及限制。",
+          "依第119條檢驗受益人是否有信賴不值得保護之情形。",
+          "若信賴值得保護，衡量公益與信賴利益，並說明存續保護或財產補償。",
+          "補充除斥期間及個案涵攝。",
+          "作成結論。"
+        ]
+      },
+      {
+        id: "welfare-low-birthrate",
+        source: "內建題庫",
+        subject: "社會福利政策與法規",
+        type: "政策評析",
+        title: "少子女化與福利制度調整",
+        prompt: "試分析少子女化對我國社會福利制度造成之衝擊，並評析現行托育及育兒支持政策，提出具體改善建議。",
+        ability: "問題分析、政策評析、制度建議",
+        hints: [
+          "衝擊不只人口減少，也涉及勞動力、社會保險與照顧負擔。",
+          "政策可從托育公共化、育兒津貼、職場友善及住宅支持切入。",
+          "改善建議應避免只增加現金給付，需處理工作與家庭衝突。"
+        ],
+        outline: [
+          "前言：少子女化是家庭、勞動市場與福利制度交互作用的新社會風險。",
+          "分析成因：高房價、低薪、照顧成本、性別分工及職場不友善。",
+          "說明衝擊：人口結構、社會保險財務、照顧人力與世代負擔。",
+          "評析現行政策：托育公共化、準公共托育、育兒津貼與育嬰留停。",
+          "指出困境：服務量能、城鄉差距、照顧品質與政策碎片化。",
+          "提出整合性建議並作結。"
+        ]
+      },
+      {
+        id: "socialwork-ecological-system",
+        source: "內建題庫",
+        subject: "社會工作",
+        type: "原鄉整合題",
+        title: "原鄉高齡化的生態系統分析",
+        prompt: "某原鄉因青年人口外流，造成高齡者照顧支持不足。請運用生態系統理論分析其問題，並提出具文化適切性之社會工作處遇策略。",
+        ability: "理論套用、系統分析、文化適切性",
+        hints: [
+          "依微視、中介、外部與鉅視系統逐層分析。",
+          "不要只列定義，要把每一層直接套回原鄉高齡者的生活處境。",
+          "處遇可結合家庭支持、部落組織、文化健康站及跨網絡合作。"
+        ],
+        outline: [
+          "界定生態系統理論及人與環境互動觀點。",
+          "微視系統：長者健康、家庭照顧能力與日常支持。",
+          "中介系統：家庭、文化健康站、醫療與社福資源的連結。",
+          "外部系統：就業外流、交通、服務可近性及政策資源。",
+          "鉅視系統：文化價值、制度設計及主流服務模式。",
+          "提出文化安全、部落參與、跨網絡個案管理及在地培力策略。"
+        ]
+      },
+      {
+        id: "sociology-bourdieu-education",
+        source: "內建題庫",
+        subject: "社會學",
+        type: "理論分析",
+        title: "布迪厄與原鄉教育不平等",
+        prompt: "試以布迪厄之資本理論分析原鄉教育不平等及階級再製現象，並提出可能的制度改善方向。",
+        ability: "理論解釋、結構分析、制度建議",
+        hints: [
+          "核心可使用文化資本、社會資本、象徵資本與場域。",
+          "說明學校如何把優勢群體的文化當成理所當然的標準。",
+          "改善方向要處理文化回應教學、資源差距與升學制度。"
+        ],
+        outline: [
+          "介紹布迪厄對教育與階級再製之觀點。",
+          "文化資本：語言、知識與習性和主流學校文化的距離。",
+          "社會資本：家庭與社群可動員的人際網絡差異。",
+          "象徵資本與場域：主流文化獲得正當性並形成象徵暴力。",
+          "套用原鄉教育資源、師資與文化落差。",
+          "提出文化回應教育、在地師資、資源平權及多元評量。"
+        ]
+      },
+      {
+        id: "indigenous-education-law",
+        source: "內建題庫",
+        subject: "原住民族行政及法規",
+        type: "政策評析",
+        title: "原住民族教育的核心精神",
+        prompt: "請說明原住民族教育之核心精神，並分析其對教育機會均等、文化傳承及民族主體性之重要性。",
+        ability: "法規理解、政策價值、原民觀點",
+        hints: [
+          "可從民族教育、一般教育中的原住民族教育及教育自主切入。",
+          "教育機會均等並不等同於所有人接受完全相同的教育。",
+          "結論可強調實質平等、文化安全與民族主體性。"
+        ],
+        outline: [
+          "說明原住民族教育的法制目的與基本精神。",
+          "民族教育：語言、歷史、文化、知識體系與認同傳承。",
+          "教育機會均等：從形式平等走向差異回應與實質平等。",
+          "師資培育、課程教材、實驗教育及社區參與的重要性。",
+          "分析現行困境：資源、師資、城鄉差距及文化斷裂。",
+          "以民族主體性與文化安全作結。"
+        ]
+      },
+      {
+        id: "cross-youth-outflow",
+        source: "內建題庫",
+        subject: "跨科整合",
+        type: "原鄉整合題",
+        title: "原鄉青年外流與文化傳承斷層",
+        prompt: "某原鄉長期面臨青年人口外流、高齡化與文化傳承斷層。請分別運用社會工作生態系統理論及社會學資本理論分析，並提出社區層次之改善方案。",
+        ability: "跨科整合、理論比較、社區方案設計",
+        hints: [
+          "先分開處理兩個理論，再進行整合，避免概念混在一起。",
+          "生態系統重視多層環境互動；資本理論重視資源分配與再製。",
+          "方案應包含在地就業、青年返鄉、長者參與與文化知識傳承。"
+        ],
+        outline: [
+          "界定青年外流、高齡化及文化傳承斷層的複合問題。",
+          "以生態系統理論分析個人、家庭、組織、政策及文化環境。",
+          "以文化、社會及象徵資本分析資源落差與再製。",
+          "整合兩理論：環境支持不足與資本累積不均相互強化。",
+          "提出青年返鄉支持、部落產業、代間學習及在地服務網絡。",
+          "強調部落自主參與及文化適切性。"
+        ]
+      },
+      {
+        id: "social-investment-welfare",
+        source: "內建題庫",
+        subject: "社會福利政策與法規",
+        type: "理論分析",
+        title: "社會投資型福利與新社會風險",
+        prompt: "請說明社會投資型福利之核心理念，並評析其對少子女化、高齡化及勞動市場不穩定等新社會風險之回應能力。",
+        ability: "福利理論、政策統整、批判思考",
+        hints: [
+          "社會投資強調預防、人力資本與生命歷程，而非僅事後所得補償。",
+          "可討論兒童早期投資、就業促進、終身學習及照顧服務。",
+          "批判面向包括過度工作導向、忽略無法就業者與照顧價值。"
+        ],
+        outline: [
+          "說明新社會風險與傳統所得維持制度的侷限。",
+          "界定社會投資型福利：預防、能力建構、人力資本及生命歷程。",
+          "分析其對少子女化、高齡化及非典型就業之政策工具。",
+          "說明優點：提升就業、預防貧窮、強化照顧服務。",
+          "批判侷限：工作中心主義、弱勢排除及成果延遲。",
+          "提出與所得保障、普及服務並行的整合模式。"
+        ]
+      }
+    ];
+
+    const modeConfig = {
+      "12": {
+        label: "骨架模式",
+        seconds: 12 * 60,
+        target: 250,
+        stages: [
+          { endRatio: 0.25, text: "審題與抓題眼" },
+          { endRatio: 0.84, text: "列出標題、法條與關鍵詞" },
+          { endRatio: 1, text: "補缺漏並確認結論" }
+        ]
+      },
+      "25": {
+        label: "半題模式",
+        seconds: 25 * 60,
+        target: 600,
+        stages: [
+          { endRatio: 0.16, text: "審題與列架構" },
+          { endRatio: 0.80, text: "完成核心段落" },
+          { endRatio: 0.92, text: "補強法條、理論或涵攝" },
+          { endRatio: 1, text: "檢查與收尾" }
+        ]
+      },
+      "40": {
+        label: "全真模式",
+        seconds: 40 * 60,
+        target: 1000,
+        stages: [
+          { endRatio: 0.125, text: "審題與列架構" },
+          { endRatio: 0.825, text: "正文作答" },
+          { endRatio: 0.95, text: "補強法條、理論與涵攝" },
+          { endRatio: 1, text: "檢查題意與結論" }
+        ]
+      }
+    };
+
+    let allQuestions = [];
+    let currentQuestion = null;
+    let currentDuration = modeConfig["40"].seconds;
+    let remainingSeconds = currentDuration;
+    let timerInterval = null;
+    let timerRunning = false;
+    let hintUsed = 0;
+    let answerFinished = false;
+
+    const $ = (id) => document.getElementById(id);
+
+    function safeParse(raw, fallback) {
+      try {
+        const parsed = JSON.parse(raw);
+        return parsed ?? fallback;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function getCustomQuestions() {
+      const value = safeParse(localStorage.getItem(STORAGE_KEYS.customQuestions), []);
+      return Array.isArray(value) ? value : [];
+    }
+
+    function getDrafts() {
+      const value = safeParse(localStorage.getItem(STORAGE_KEYS.drafts), {});
+      return value && typeof value === "object" ? value : {};
+    }
+
+    function getHistory() {
+      const value = safeParse(localStorage.getItem(STORAGE_KEYS.history), []);
+      return Array.isArray(value) ? value : [];
+    }
+
+    function initQuestionBank() {
+      allQuestions = [...builtInQuestions, ...getCustomQuestions()];
+      refreshQuestionSelect();
+    }
+
+    function filteredQuestions() {
+      const subject = $("subject-filter").value;
+      const type = $("type-filter").value;
+      return allQuestions.filter((question) => {
+        const subjectMatch = subject === "全部" || question.subject === subject;
+        const typeMatch = type === "全部" || question.type === type;
+        return subjectMatch && typeMatch;
+      });
+    }
+
+    function refreshQuestionSelect() {
+      const select = $("question-select");
+      const questions = filteredQuestions();
+      select.innerHTML = "";
+
+      if (questions.length === 0) {
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = "目前沒有符合條件的題目";
+        select.appendChild(option);
+        return;
+      }
+
+      questions.forEach((question) => {
+        const option = document.createElement("option");
+        option.value = question.id;
+        option.textContent = `${question.subject}｜${question.title}`;
+        select.appendChild(option);
+      });
+    }
+
+    function findQuestion(questionId) {
+      return allQuestions.find((question) => question.id === questionId) || null;
+    }
+
+    function loadSelectedQuestion() {
+      const question = findQuestion($("question-select").value);
+      if (!question) {
+        alert("目前沒有可載入的題目。");
+        return;
+      }
+      setCurrentQuestion(question);
+    }
+
+    function loadRandomQuestion() {
+      const questions = filteredQuestions();
+      if (questions.length === 0) {
+        alert("目前篩選條件沒有題目。");
+        return;
+      }
+      const question = questions[Math.floor(Math.random() * questions.length)];
+      $("question-select").value = question.id;
+      setCurrentQuestion(question);
+    }
+
+    function setCurrentQuestion(question) {
+      saveDraft(false);
+      currentQuestion = question;
+      answerFinished = false;
+      hintUsed = 0;
+
+      $("question-title").textContent = question.title;
+      $("question-prompt").textContent = question.prompt;
+      $("question-origin").textContent = question.source || "內建題庫";
+      $("question-meta").innerHTML = "";
+
+      [question.subject, question.type, `核心能力：${question.ability || "綜合申論"}`].forEach((text) => {
+        const span = document.createElement("span");
+        span.className = "tag";
+        span.textContent = text;
+        $("question-meta").appendChild(span);
+      });
+
+      resetHints();
+      resetChecklist();
+      hideReviewPanels();
+      loadDraft(question.id);
+      resetTimer();
+      updateWordCount();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function addCustomQuestion() {
+      const title = $("custom-title").value.trim();
+      const prompt = $("custom-prompt").value.trim();
+      if (!title || !prompt) {
+        alert("請填寫自訂題目的題名與完整題目。");
+        return;
+      }
+
+      const question = {
+        id: `custom-${Date.now()}`,
+        source: "自訂題庫",
+        subject: $("custom-subject").value,
+        type: $("custom-type").value,
+        title,
+        prompt,
+        ability: "自訂訓練",
+        hints: ["先找出題目動詞與核心名詞。", "列出你確定能使用的法條、理論或政策。", "依定義、分析、建議與結論建立骨架。"],
+        outline: ["界定核心概念與題意。", "提出主要法條、理論或政策依據。", "依題目情境進行分析或涵攝。", "說明問題、限制或實務困境。", "提出具體建議並完成結論。"]
+      };
+
+      const customs = getCustomQuestions();
+      customs.push(question);
+      localStorage.setItem(STORAGE_KEYS.customQuestions, JSON.stringify(customs));
+      $("custom-title").value = "";
+      $("custom-prompt").value = "";
+      initQuestionBank();
+      $("subject-filter").value = question.subject;
+      $("type-filter").value = question.type;
+      refreshQuestionSelect();
+      $("question-select").value = question.id;
+      setCurrentQuestion(question);
+    }
+
+    function currentDraftPayload() {
+      return {
+        keywords: $("keywords-input").value,
+        outline: $("outline-input").value,
+        answer: $("answer-input").value,
+        savedAt: new Date().toISOString()
+      };
+    }
+
+    function saveDraft(showMessage = true) {
+      if (!currentQuestion) return;
+      const drafts = getDrafts();
+      drafts[currentQuestion.id] = currentDraftPayload();
+      localStorage.setItem(STORAGE_KEYS.drafts, JSON.stringify(drafts));
+
+      if (showMessage) {
+        showStatus("draft-status", "草稿已儲存在這台裝置。", "success");
+      }
+    }
+
+    function loadDraft(questionId) {
+      const draft = getDrafts()[questionId];
+      $("keywords-input").value = draft?.keywords || "";
+      $("outline-input").value = draft?.outline || "";
+      $("answer-input").value = draft?.answer || "";
+    }
+
+    function clearCurrentDraft() {
+      if (!currentQuestion) return;
+      if (!confirm("確定要清除目前題目的三階段作答草稿嗎？")) return;
+
+      const drafts = getDrafts();
+      delete drafts[currentQuestion.id];
+      localStorage.setItem(STORAGE_KEYS.drafts, JSON.stringify(drafts));
+      $("keywords-input").value = "";
+      $("outline-input").value = "";
+      $("answer-input").value = "";
+      updateWordCount();
+      showStatus("draft-status", "本題草稿已清除。", "success");
+    }
+
+    function updateMode() {
+      const mode = modeConfig[$("mode-select").value];
+      $("mode-label").textContent = mode.label;
+      $("writing-target-text").textContent = `目標約 ${mode.target.toLocaleString()} 字`;
+      currentDuration = mode.seconds;
+      resetTimer();
+      updateWordCount();
+    }
+
+    function formatTime(seconds) {
+      const safeSeconds = Math.max(0, seconds);
+      const minutes = Math.floor(safeSeconds / 60).toString().padStart(2, "0");
+      const secs = Math.floor(safeSeconds % 60).toString().padStart(2, "0");
+      return `${minutes}:${secs}`;
+    }
+
+    function updateTimerUI() {
+      $("timer-display").textContent = formatTime(remainingSeconds);
+      const elapsed = currentDuration - remainingSeconds;
+      const ratio = currentDuration === 0 ? 0 : elapsed / currentDuration;
+      $("timer-progress-bar").style.width = `${Math.min(100, Math.max(0, ratio * 100))}%`;
+
+      const config = modeConfig[$("mode-select").value];
+      if (!timerRunning && elapsed === 0) {
+        $("timer-stage").textContent = "尚未開始｜先讀題，不要急著下筆";
+        return;
+      }
+
+      const stage = config.stages.find((item) => ratio <= item.endRatio) || config.stages[config.stages.length - 1];
+      $("timer-stage").textContent = remainingSeconds > 0 ? `目前階段｜${stage.text}` : "時間已到｜停止新增內容，進入自評";
+      $("timer-display").style.color = remainingSeconds <= 60 ? "var(--error)" : "var(--text)";
+    }
+
+    function startTimer() {
+      if (!currentQuestion) {
+        alert("請先載入一題申論題。 ");
+        return;
+      }
+      if (timerRunning || remainingSeconds <= 0) return;
+      timerRunning = true;
+      timerInterval = window.setInterval(() => {
+        remainingSeconds -= 1;
+        updateTimerUI();
+        if (remainingSeconds <= 0) {
+          pauseTimer();
+          remainingSeconds = 0;
+          updateTimerUI();
+          alert("⏰ 作答時間已到。請停止新增內容，進入自我評分。 ");
+        }
+      }, 1000);
+      updateTimerUI();
+    }
+
+    function pauseTimer() {
+      timerRunning = false;
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      updateTimerUI();
+    }
+
+    function resetTimer() {
+      pauseTimer();
+      currentDuration = modeConfig[$("mode-select").value].seconds;
+      remainingSeconds = currentDuration;
+      updateTimerUI();
+    }
+
+    function updateWordCount() {
+      const text = $("answer-input").value.replace(/\s/g, "");
+      const count = text.length;
+      const target = modeConfig[$("mode-select").value].target;
+      const percentage = Math.min(100, Math.round((count / target) * 100));
+      $("word-count").textContent = `${count.toLocaleString()} 字`;
+      $("writing-progress").style.width = `${percentage}%`;
+    }
+
+    function resetHints() {
+      hintUsed = 0;
+      $("hint-count").textContent = "0";
+      [1, 2, 3].forEach((number) => {
+        const box = $(`hint-${number}`);
+        box.classList.remove("visible");
+        box.textContent = "";
+      });
+      $("hint-btn").disabled = false;
+      $("hint-btn").textContent = "顯示下一個提示";
+    }
+
+    function showNextHint() {
+      if (!currentQuestion || hintUsed >= 3) return;
+      const next = hintUsed + 1;
+      const box = $(`hint-${next}`);
+      box.textContent = `提示 ${next}：${currentQuestion.hints[next - 1]}`;
+      box.classList.add("visible");
+      hintUsed = next;
+      $("hint-count").textContent = String(hintUsed);
+
+      if (hintUsed >= 3) {
+        $("hint-btn").disabled = true;
+        $("hint-btn").textContent = "提示已全部顯示";
+      }
+    }
+
+    function resetChecklist() {
+      document.querySelectorAll("#check-list input[type='checkbox']").forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+    }
+
+    function hideReviewPanels() {
+      $("model-outline-panel").classList.remove("visible-panel");
+      $("score-panel").classList.remove("visible-panel");
+    }
+
+    function finishAnswer() {
+      if (!currentQuestion) {
+        alert("請先載入題目。 ");
+        return;
+      }
+
+      const hasAnyWork = $("keywords-input").value.trim() || $("outline-input").value.trim() || $("answer-input").value.trim();
+      if (!hasAnyWork) {
+        alert("目前尚未填寫任何內容。至少先完成抓題眼或申論骨架。 ");
+        return;
+      }
+
+      pauseTimer();
+      saveDraft(false);
+      answerFinished = true;
+      renderModelOutline();
+      $("model-outline-panel").classList.add("visible-panel");
+      $("score-panel").classList.add("visible-panel");
+      $("score-panel").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderModelOutline() {
+      const list = $("model-outline-list");
+      list.innerHTML = "";
+      (currentQuestion?.outline || []).forEach((line) => {
+        const li = document.createElement("li");
+        li.textContent = line;
+        list.appendChild(li);
+      });
+    }
+
+    function scoreIds() {
+      return ["reading", "structure", "theory", "analysis", "conclusion", "time"];
+    }
+
+    function updateScore() {
+      let total = 0;
+      scoreIds().forEach((name) => {
+        const value = Number($(`score-${name}`).value);
+        total += value;
+        $(`score-${name}-value`).textContent = String(value);
+      });
+      $("total-score").textContent = String(total);
+      return total;
+    }
+
+    function saveSimulationRecord() {
+      if (!currentQuestion || !answerFinished) {
+        showStatus("record-status", "請先完成作答並進入自評。", "error");
+        return;
+      }
+
+      const record = {
+        id: `record-${Date.now()}`,
+        date: new Date().toISOString(),
+        subject: currentQuestion.subject,
+        type: currentQuestion.type,
+        title: currentQuestion.title,
+        questionId: currentQuestion.id,
+        mode: modeConfig[$("mode-select").value].label,
+        durationMinutes: Number($("mode-select").value),
+        elapsedSeconds: currentDuration - remainingSeconds,
+        hintUsed,
+        wordCount: $("answer-input").value.replace(/\s/g, "").length,
+        scores: {
+          reading: Number($("score-reading").value),
+          structure: Number($("score-structure").value),
+          theory: Number($("score-theory").value),
+          analysis: Number($("score-analysis").value),
+          conclusion: Number($("score-conclusion").value),
+          time: Number($("score-time").value)
+        },
+        totalScore: updateScore(),
+        weakness: $("weakness-input").value.trim(),
+        nextFix: $("next-fix-input").value.trim(),
+        memorySentence: $("memory-sentence-input").value.trim()
+      };
+
+      const history = getHistory();
+      history.unshift(record);
+      localStorage.setItem(STORAGE_KEYS.history, JSON.stringify(history));
+      renderHistory();
+      showStatus("record-status", "本次模擬紀錄已儲存。首頁之後也可再串接這份資料。", "success");
+    }
+
+    function renderHistory() {
+      const history = getHistory();
+      $("history-count").textContent = String(history.length);
+      const list = $("history-list");
+
+      if (history.length === 0) {
+        list.className = "empty-state";
+        list.textContent = "尚未建立模擬紀錄";
+        return;
+      }
+
+      list.className = "";
+      list.innerHTML = "";
+      history.slice(0, 8).forEach((record) => {
+        const item = document.createElement("div");
+        item.className = "history-item";
+
+        const head = document.createElement("div");
+        head.className = "history-head";
+
+        const info = document.createElement("div");
+        const title = document.createElement("div");
+        title.style.fontWeight = "700";
+        title.textContent = record.title;
+        const meta = document.createElement("div");
+        meta.className = "history-meta";
+        meta.textContent = `${new Date(record.date).toLocaleDateString("zh-TW")}｜${record.subject}｜${record.mode}｜提示 ${record.hintUsed} 次`;
+        info.append(title, meta);
+
+        if (record.weakness) {
+          const weakness = document.createElement("div");
+          weakness.className = "history-meta";
+          weakness.style.marginTop = "7px";
+          weakness.textContent = `需修正：${record.weakness}`;
+          info.appendChild(weakness);
+        }
+
+        const score = document.createElement("div");
+        score.className = "history-score";
+        score.textContent = String(record.totalScore);
+
+        head.append(info, score);
+        item.appendChild(head);
+        list.appendChild(item);
+      });
+    }
+
+    function exportHistory() {
+      const history = getHistory();
+      if (history.length === 0) {
+        alert("目前沒有可匯出的紀錄。 ");
+        return;
+      }
+      const blob = new Blob([JSON.stringify(history, null, 2)], { type: "application/json;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `申論模擬紀錄_${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearHistory() {
+      if (!confirm("確定要清空所有申論模擬紀錄嗎？此動作無法復原。")) return;
+      localStorage.removeItem(STORAGE_KEYS.history);
+      renderHistory();
+    }
+
+    function restartCurrentQuestion() {
+      if (!currentQuestion) return;
+      $("keywords-input").value = "";
+      $("outline-input").value = "";
+      $("answer-input").value = "";
+      $("weakness-input").value = "";
+      $("next-fix-input").value = "";
+      $("memory-sentence-input").value = "";
+      scoreIds().forEach((name) => {
+        const defaults = { reading: 10, structure: 10, theory: 10, analysis: 10, conclusion: 8, time: 3 };
+        $(`score-${name}`).value = defaults[name];
+      });
+      updateScore();
+      answerFinished = false;
+      hideReviewPanels();
+      resetHints();
+      resetChecklist();
+      resetTimer();
+      updateWordCount();
+      clearCurrentDraftWithoutConfirm();
+      $("question-prompt").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function clearCurrentDraftWithoutConfirm() {
+      if (!currentQuestion) return;
+      const drafts = getDrafts();
+      delete drafts[currentQuestion.id];
+      localStorage.setItem(STORAGE_KEYS.drafts, JSON.stringify(drafts));
+    }
+
+    function showStatus(elementId, message, type) {
+      const element = $(elementId);
+      element.textContent = message;
+      element.className = `status-message show ${type}`;
+      window.setTimeout(() => {
+        element.classList.remove("show");
+      }, 3500);
+    }
+
+    function updateExamCountdown() {
+      const examDate = new Date("2026-09-05T00:00:00+08:00");
+      const now = new Date();
+      const milliseconds = examDate.getTime() - now.getTime();
+      const days = Math.ceil(milliseconds / 86400000);
+
+      if (days > 0) {
+        $("exam-callout").innerHTML = `🎯 距離 115 年原特三等考試還有 <strong style="font-size:24px;color:var(--error);">${days}</strong> 天｜今天至少完成一個可輸出的申論骨架。`;
+      } else if (days === 0) {
+        $("exam-callout").textContent = "🔥 今天就是考試日。按你的架構作答，相信已累積的訓練。";
+      } else {
+        $("exam-callout").textContent = "✨ 考試已結束。辛苦了，請好好休息並整理這段準備歷程。";
+      }
+    }
+
+    function bindEvents() {
+      $("subject-filter").addEventListener("change", refreshQuestionSelect);
+      $("type-filter").addEventListener("change", refreshQuestionSelect);
+      $("load-question-btn").addEventListener("click", loadSelectedQuestion);
+      $("random-question-btn").addEventListener("click", loadRandomQuestion);
+      $("clear-draft-btn").addEventListener("click", clearCurrentDraft);
+      $("save-custom-question-btn").addEventListener("click", addCustomQuestion);
+
+      $("mode-select").addEventListener("change", updateMode);
+      $("start-timer-btn").addEventListener("click", startTimer);
+      $("pause-timer-btn").addEventListener("click", pauseTimer);
+      $("reset-timer-btn").addEventListener("click", resetTimer);
+      $("hint-btn").addEventListener("click", showNextHint);
+
+      $("answer-input").addEventListener("input", updateWordCount);
+      ["keywords-input", "outline-input", "answer-input"].forEach((id) => {
+        $(id).addEventListener("input", () => {
+          window.clearTimeout(window.__draftTimer);
+          window.__draftTimer = window.setTimeout(() => saveDraft(false), 700);
+        });
+      });
+
+      $("save-draft-btn").addEventListener("click", () => saveDraft(true));
+      $("finish-answer-btn").addEventListener("click", finishAnswer);
+      $("save-record-btn").addEventListener("click", saveSimulationRecord);
+      $("restart-question-btn").addEventListener("click", restartCurrentQuestion);
+
+      scoreIds().forEach((name) => {
+        $(`score-${name}`).addEventListener("input", updateScore);
+      });
+
+      $("export-history-btn").addEventListener("click", exportHistory);
+      $("clear-history-btn").addEventListener("click", clearHistory);
+      window.addEventListener("beforeunload", () => saveDraft(false));
+    }
+
+    function init() {
+      updateExamCountdown();
+      initQuestionBank();
+      bindEvents();
+      updateMode();
+      updateScore();
+      renderHistory();
+
+      const firstQuestion = filteredQuestions()[0];
+      if (firstQuestion) {
+        $("question-select").value = firstQuestion.id;
+        setCurrentQuestion(firstQuestion);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
