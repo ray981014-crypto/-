@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>原特三等社會行政｜作戰指揮中心 V4</title>
+<title>地方特考三等社會行政｜作戰指揮中心 V5</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght=300;500;700&display=swap" rel="stylesheet">
 
@@ -329,7 +329,8 @@ button:disabled{
 <div class="container">
 
 <header>
-  <h1>115年原特三等｜社會行政準備紀錄區</h1>
+  <h1>115年地方特考三等｜社會行政準備紀錄區</h1>
+  <div class="small" style="margin-top:-8px;">考試日期：115年12月5日（星期六）起｜目標：地方特考三等・社會行政</div>
   <div class="callout">
     <div id="countdown"></div>
     <div class="progress-container">
@@ -350,7 +351,8 @@ button:disabled{
 <option>社會福利政策與法規</option>
 <option>社會工作</option>
 <option>社會學</option>
-<option>原民法規</option>
+<option>國文（作文與測驗）</option>
+<option>法學知識與英文（憲法、法緒、英文）</option>
 </select>
 
 <input id="hours" type="number" step="0.5" min="0" placeholder="學習時數">
@@ -374,7 +376,7 @@ button:disabled{
 
 <div>
 <div class="card youtube-card">
-<div class="title">☕ 專專注音樂</div>
+<div class="title">☕ 專注音樂</div>
 
 <div id="focus-music-player"></div>
 
@@ -403,7 +405,7 @@ button:disabled{
 </div>
 
 <div class="card">
-  <div class="title">🎯 本週作戰目標（7/20–7/26）</div>
+  <div class="title">🎯 本週作戰目標（9/21–9/27）</div>
   <div id="todo-container" style="padding-left:4px;"></div>
 </div>
 
@@ -438,22 +440,25 @@ let myMusicPool = [];
 let ytPlayer = null; 
 
 const defaultTargets = [
-  "【行政法】 精熟「訴願法第二輪」數字防線、收受主義與特殊決定，週六手寫輸出 1 題完整申論。",
-  "【社會工作】 攻克「專業倫理與倫理兩難」，平衡自決、保密與原鄉文化適切性，完成長者拒絕長照案例分析。",
-  "【社福政策】 釐清社會保險、救助與津貼之財務與重分配差異，掌握年金財務壓力與制度永續問題。",
-  "【社會學】 熟練套用衝突論、布迪厄、涂爾幹及標籤理論，剖析族群關係、文化認同與制度性不平等。",
-  "【原民法規】 掃除《原住民族健康法》健康權、國家責任與文化安全架構，完成原鄉就醫困難案例骨架。",
-  "【綜合輸出】 落實「每日四步法」與「累時最低標準」，週六、日嚴格執行關書口述與全週補洞維穩。"
+  "【行政法】 完成地方特考轉換盤點：行政程序法、行政處分、行政救濟與國家賠償各整理 1 份高頻錯題清單，並輸出 1 題申論。",
+  "【社會工作】 重新拉高個案工作、團體工作、社區工作與倫理決策的申論比重，至少完成 2 題題目拆解與擬答骨架。",
+  "【社福政策】 聚焦地方政府執行視角，複習社會保險、社會救助、長照、兒少與身障政策，練習把中央制度連結到地方治理與福利輸送。",
+  "【社會學】 複習不平等、社會階層、家庭、人口、都市化與社會變遷，至少完成 2 題理論套用與實例分析。",
+  "【共同科目】 國文至少完成 1 次作文架構；法學知識與英文安排短時段維持手感，避免專業科目擠壓共同科目。",
+  "【考古題】 先做 1 回地方特考三等社會行政歷屆試題，標記『已會／模糊／完全不會』，建立 12/5 前補洞清單。",
+  "【綜合輸出】 週末完成一次 90–120 分鐘限時申論訓練；每科至少產出 1 張可快速複習的 A4 重點頁。"
 ];
 
 function countdown(){
-  const startDate = new Date("2026-01-01").getTime(); 
-  const examDate = new Date("2026-09-05").getTime();  
-  const nowDate = new Date().getTime();
+  // 以「日期」而非當下時分秒計算，避免白天開啟頁面時倒數少 1 天
+  const startDate = new Date(2026, 8, 24).getTime(); // 2026/09/24
+  const examDate = new Date(2026, 11, 5).getTime(); // 2026/12/05
+  const now = new Date();
+  const nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
   
   const d = Math.floor((examDate - nowDate) / (1000 * 60 * 60 * 24));
   document.getElementById("countdown").innerHTML =
-  d > 0 ? "🎯 距離考試還有 <span style='font-size: 38px; font-weight: 700; color: var(--error); vertical-align: -2px; margin: 0 4px;'>" + d + "</span> 天" : "🔥 考試已到";
+  d > 0 ? "🎯 距離 12/5 地特三等還有 <span style='font-size: 38px; font-weight: 700; color: var(--error); vertical-align: -2px; margin: 0 4px;'>" + d + "</span> 天" : "🔥 地方特考三等考試已到";
 
   const totalDuration = examDate - startDate;
   const elapsedDuration = nowDate - startDate;
@@ -463,7 +468,7 @@ function countdown(){
   if (percent > 100) percent = 100;
   
   document.getElementById("progress-bar").style.width = percent + "%";
-  document.getElementById("progress-text").innerText = "⏳ 115年備考時間軸已推進 " + percent + "%";
+  document.getElementById("progress-text").innerText = "⏳ 地特三等衝刺期已推進 " + percent + "%";
 }
 
 function onYouTubeIframeAPIReady() {
@@ -610,14 +615,14 @@ function clearCustomPlaylist() {
 }
 
 function initTargets() {
-  const savedTargets = localStorage.getItem("battle_targets");
+  const savedTargets = localStorage.getItem("battle_targets_local115");
   let targetsState = [];
   if (savedTargets) {
     try { targetsState = JSON.parse(savedTargets); } catch(e) { targetsState = []; }
   }
   if (targetsState.length === 0) {
     targetsState = defaultTargets.map(text => ({ text: text, done: false }));
-    localStorage.setItem("battle_targets", JSON.stringify(targetsState));
+    localStorage.setItem("battle_targets_local115", JSON.stringify(targetsState));
   }
   renderTargets(targetsState);
 }
@@ -638,9 +643,9 @@ function renderTargets(targets) {
 }
 
 function toggleTarget(index) {
-  const savedTargets = JSON.parse(localStorage.getItem("battle_targets"));
+  const savedTargets = JSON.parse(localStorage.getItem("battle_targets_local115"));
   savedTargets[index].done = !savedTargets[index].done;
-  localStorage.setItem("battle_targets", JSON.stringify(savedTargets));
+  localStorage.setItem("battle_targets_local115", JSON.stringify(savedTargets));
   renderTargets(savedTargets);
 }
 
